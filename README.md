@@ -1,5 +1,4 @@
-# 2023-1 소프트웨어 공학
-# 채팅마차 안드로이드
+# 2023-1 소프트웨어공학 채팅마차 안드로이드
 
 <br>
 
@@ -32,8 +31,8 @@
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/Oc9aN"><img src="https://avatars.githubusercontent.com/u/59911975?v=4"width="200px;" alt=""/><br /><sub><b>FE 팀장 : 오시현</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/bae-suho"><img src="https://avatars.githubusercontent.com/u/115385697?v=4" width="200px;" alt=""/><br /><sub><b>FE 팀원 : 배수호</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/Oc9aN"><img src="https://avatars.githubusercontent.com/u/59911975?v=4"width="150px;" alt=""/><br /><sub><b>FE 팀장 : 오시현</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/bae-suho"><img src="https://avatars.githubusercontent.com/u/115385697?v=4" width="150px;" alt=""/><br /><sub><b>FE 팀원 : 배수호</b></sub></a><br /></td>
     </tr>
   </tbody>
 </table>
