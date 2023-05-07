@@ -8,5 +8,5 @@
     tools:context=".LoginActivity"
     android:orientation="vertical"
     android:id="@+id/MainLayout">
-    
+
 </LinearLayout>
