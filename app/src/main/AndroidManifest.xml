@@ -13,6 +13,20 @@
         android:theme="@style/Theme.ChattingBarAndroid"
         tools:targetApi="31">
         <activity
+            android:name=".IdentityPW"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".IdentityID"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ID_PW_find"
             android:exported="false">
             <meta-data
