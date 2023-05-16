@@ -1,107 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:id="@+id/MainLayout"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- 상단바 -->
+
+    <LinearLayout
+        android:id="@+id/Tool_Bar"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="77dp"
-        android:id="@+id/Tool_Bar">
+        android:layout_height="56dp"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <!--사용자 프로필 사진-->
 
         <ImageView
-            android:id="@+id/User_Image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/sym_def_app_icon" />
+            android:id="@+id/Profile_Image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <!--사용자 닉네임-->
 
         <TextView
-            android:id="@+id/App_Title"
-            android:layout_width="146dp"
-            android:layout_height="20dp"
-            android:text="채팅마차"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/Search_button"
+            android:id="@+id/User_Nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="검색"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="사용자 닉네임"
+            android:textColor="@android:color/black"
+            android:textSize="10sp"
+            android:layout_marginLeft="8dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--공백-->
 
-    <ScrollView
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <!--검색 버튼-->
+
+        <ImageButton
+            android:id="@+id/search_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:layout_marginRight="16dp"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+
+    </LinearLayout>
+
+    <!-- 메인 화면 리스트뷰 -->
+
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="598dp">
+        android:layout_height="620dp"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:orientation="vertical"
+        android:scrollbars="vertical" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <!-- 바텀바 -->
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/Bottom_Bar"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:id = "@+id/Bottom_Bar">
+        android:layout_height="56dp"
+        android:background="@color/white">
+
+        <!--채팅기록 버튼-->
 
         <Button
-            android:id="@+id/ChattingList_button"
+            android:id="@+id/chattingList_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="채팅목록"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_weight="1"
+            android:text="채팅기록" />
+
+        <!--홈 버튼-->
 
         <Button
-            android:id="@+id/Main_button"
+            android:id="@+id/home_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="메인"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_weight="1"
+            android:text="홈" />
+
+        <!--설정 버튼 -->
 
         <Button
-            android:id="@+id/Setting_button"
+            android:id="@+id/setting_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="설정"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+            android:layout_weight="1"
+            android:text="설정" />
+    </LinearLayout>
 
 </LinearLayout>
