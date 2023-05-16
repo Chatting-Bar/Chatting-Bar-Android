@@ -10,8 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="77dp"
         android:background="@color/HeaderColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -43,35 +41,281 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="참여인원"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="109dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="244dp"
-        android:layout_height="31dp"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="145dp" />
+        <!--        상단바-->
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="시간설정"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="189dp" />
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="58dp"
-        android:layout_height="27dp"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="237dp" />
+            <!--        상단바-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ID_view"
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:layout_marginTop="80dp">
+
+                <EditText
+                    android:id="@+id/ID_input"
+                    android:layout_width="194dp"
+                    android:layout_height="41dp"
+                    android:background="@drawable/round_rect"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="15dp"
+                    tools:layout_editor_absoluteX="108dp"
+                    tools:layout_editor_absoluteY="22dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="참여인원"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="30dp"
+                    tools:layout_editor_absoluteY="6dp" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="137dp"
+                    android:layout_height="33dp"
+                    tools:layout_editor_absoluteX="137dp"
+                    tools:layout_editor_absoluteY="26dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ID_view"
+                android:layout_width="404dp"
+                android:layout_height="169dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시간설정"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="30dp"
+                    tools:layout_editor_absoluteY="5dp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시작"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="110dp"
+                    tools:layout_editor_absoluteY="12dp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="종료"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="110dp"
+                    tools:layout_editor_absoluteY="84dp" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="137dp"
+                    android:layout_height="33dp"
+                    tools:layout_editor_absoluteX="134dp"
+                    tools:layout_editor_absoluteY="36dp" />
+
+                <EditText
+                    android:id="@+id/ID_input2"
+                    android:layout_width="194dp"
+                    android:layout_height="41dp"
+                    android:background="@drawable/round_rect"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="15dp"
+                    tools:layout_editor_absoluteX="110dp"
+                    tools:layout_editor_absoluteY="32dp" />
+
+                <EditText
+                    android:id="@+id/ID_input3"
+                    android:layout_width="194dp"
+                    android:layout_height="41dp"
+                    android:background="@drawable/round_rect"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="15dp"
+                    tools:layout_editor_absoluteX="110dp"
+                    tools:layout_editor_absoluteY="104dp" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="137dp"
+                    android:layout_height="33dp"
+                    tools:layout_editor_absoluteX="134dp"
+                    tools:layout_editor_absoluteY="112dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ID_view"
+                android:layout_width="match_parent"
+                android:layout_height="84dp">
+
+                <EditText
+                    android:id="@+id/ID_input"
+                    android:layout_width="355dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/round_rect"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:text="제목을 입력하세요."
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="33dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="메뉴"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="30dp"
+                    tools:layout_editor_absoluteY="6dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+           <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ID_view"
+                android:layout_width="match_parent"
+                android:layout_height="84dp">
+
+                <EditText
+                    android:id="@+id/ID_input"
+                    android:layout_width="194dp"
+                    android:layout_height="41dp"
+                    android:background="@drawable/round_rect"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="15dp"
+                    tools:layout_editor_absoluteX="108dp"
+                    tools:layout_editor_absoluteY="22dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="비밀번호"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="30dp"
+                    tools:layout_editor_absoluteY="6dp" />
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:layout_editor_absoluteX="314dp"
+                    tools:layout_editor_absoluteY="30dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ID_view"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <EditText
+                    android:id="@+id/ID_input4"
+                    android:layout_width="348dp"
+                    android:layout_height="98dp"
+                    android:background="@drawable/round_rect"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:text=""
+                    android:textSize="15dp"
+                    tools:layout_editor_absoluteX="32dp"
+                    tools:layout_editor_absoluteY="36dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주제태그"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="30dp"
+                    tools:layout_editor_absoluteY="6dp" />
+
+                <Button
+                    android:id="@+id/login_enter6"
+                    android:layout_width="63dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/round_rect_fill"
+                    android:text="+"
+                    tools:layout_editor_absoluteX="42dp"
+                    tools:layout_editor_absoluteY="43dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/login_enter3"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_rect"
+                    android:text="취소"
+                    tools:layout_editor_absoluteX="42dp"
+                    tools:layout_editor_absoluteY="5dp" />
+
+                <Button
+                    android:id="@+id/login_enter2"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_rect_fill"
+                    android:text="생성"
+                    tools:layout_editor_absoluteX="212dp"
+                    tools:layout_editor_absoluteY="5dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
