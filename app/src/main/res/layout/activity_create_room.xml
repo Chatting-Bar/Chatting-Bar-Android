@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<!--    상단바 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_bar"
         android:layout_width="match_parent"
@@ -12,6 +13,21 @@
         android:background="@color/HeaderColor"
         app:layout_constraintTop_toTopOf="parent">
 
+<!--        나가기버튼-->
+        <Button
+            android:id="@+id/Exit_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="None"
+            android:text="X"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        화면 이름-->
         <TextView
             android:id="@+id/activity_name"
             android:layout_width="wrap_content"
@@ -26,76 +42,68 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/Exit_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:background="None"
-            android:text="X"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<!--    방만들기 화면-->
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/create_view"
+        android:layout_width="411dp"
+        android:layout_height="655dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_bar">
 
-        <!--        상단바-->
-
+        <!--방 설정 아이템뷰-->
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/create_setting_items"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp">
 
-            <!--        상단바-->
-
+<!--참여인원 설정 뷰-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ID_view"
+                android:id="@+id/PartySet_view"
                 android:layout_width="match_parent"
                 android:layout_height="84dp"
-                android:layout_marginTop="80dp">
-
-                <EditText
-                    android:id="@+id/ID_input"
+                android:layout_marginTop="13dp">
+<!--인원수 사각형-->
+                <TextView
+                    android:id="@+id/rect_party"
                     android:layout_width="194dp"
-                    android:layout_height="41dp"
+                    android:layout_height="48dp"
                     android:background="@drawable/round_rect"
-                    android:ems="10"
                     android:gravity="center"
-                    android:inputType="text"
                     android:text=""
                     android:textSize="15dp"
-                    tools:layout_editor_absoluteX="108dp"
-                    tools:layout_editor_absoluteY="22dp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="4dp"
                     android:text="참여인원"
                     android:textColor="@color/black"
                     android:textSize="15dp"
                     android:textStyle="bold"
-                    tools:layout_editor_absoluteX="30dp"
-                    tools:layout_editor_absoluteY="6dp" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/party_spinner"
                     android:layout_width="137dp"
-                    android:layout_height="33dp"
-                    tools:layout_editor_absoluteX="137dp"
-                    tools:layout_editor_absoluteY="26dp" />
+                    android:layout_height="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -108,12 +116,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="4dp"
                     android:text="시간설정"
                     android:textColor="@color/black"
                     android:textSize="15dp"
                     android:textStyle="bold"
-                    tools:layout_editor_absoluteX="30dp"
-                    tools:layout_editor_absoluteY="5dp" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -212,7 +222,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-           <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/ID_view"
                 android:layout_width="match_parent"
                 android:layout_height="84dp">
@@ -292,7 +302,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/login_enter3"
