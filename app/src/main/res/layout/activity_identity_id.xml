@@ -34,22 +34,20 @@
             android:id="@+id/Exit_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:text="X"
-            android:textSize="30dp"
-            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_baseline_arrow_back_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="10dp"
-            android:background="None"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!--    로그인 뷰   -->
+    <!--    인증 뷰   -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="300dp"
         android:layout_height="250dp"
-        android:id = "@+id/Login_view"
+        android:id = "@+id/main_view"
         android:background="@drawable/round_rect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/ID_view"
+            android:id="@+id/number_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -66,7 +64,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
-                android:id="@+id/ID_input"
+                android:id="@+id/number_input"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:background="@drawable/round_rect"
@@ -88,14 +86,14 @@
                 android:text="인증번호"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/ID_input"
+                app:layout_constraintStart_toStartOf="@+id/number_input"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/login_enter"
+            android:id="@+id/number_enter"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="인증하기"
