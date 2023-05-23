@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         find.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ID_PW_find.class);
+                Intent intent = new Intent(getApplicationContext(), PW_find.class);
                 startActivity(intent);
             }
         });

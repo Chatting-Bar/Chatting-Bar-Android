@@ -13,7 +13,6 @@
         android:id="@+id/Tool_Bar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/HeaderColor"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

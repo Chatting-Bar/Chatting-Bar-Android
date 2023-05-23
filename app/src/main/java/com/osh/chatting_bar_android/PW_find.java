@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ID_result extends AppCompatActivity {
+public class PW_find extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_id_result);
+        setContentView(R.layout.activity_pw_find);
 
         InitBtn();
     }
@@ -26,10 +26,13 @@ public class ID_result extends AppCompatActivity {
                 finish();
             }
         });
-        Button login = findViewById(R.id.login_enter);
-        login.setOnClickListener(new View.OnClickListener() {
+        Button PW = findViewById(R.id.PW_enter);
+        PW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), IdentityPW.class);
+                startActivity(intent);
+
                 finish();
             }
         });

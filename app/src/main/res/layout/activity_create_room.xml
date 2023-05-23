@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="10dp"
-            android:background="None"/>
+            android:background="@android:color/transparent"/>
         <!--        화면 이름-->
         <TextView
             android:id="@+id/activity_name"

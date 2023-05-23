@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="77dp"
         android:id = "@+id/header_bar"
-        android:background="@color/HeaderColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,7 +22,7 @@
             android:text="비밀번호 재설정"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/MainColor"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,17 +35,24 @@
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:background="@drawable/ic_baseline_arrow_back_24"
+            android:backgroundTint="@color/MainColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/LineColor"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    비밀번호 재설정 뷰   -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="300dp"
-        android:layout_height="250dp"
+        android:layout_width="340dp"
+        android:layout_height="300dp"
         android:id = "@+id/main_view"
         android:background="@drawable/round_rect"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,7 +61,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/result_view"
+            android:id="@+id/PW_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -65,7 +71,7 @@
 
             <EditText
                 android:id="@+id/PW_input"
-                android:layout_width="200dp"
+                android:layout_width="260dp"
                 android:layout_height="50dp"
                 android:background="@drawable/round_rect"
                 android:ems="10"
@@ -85,6 +91,7 @@
                 android:layout_marginBottom="50dp"
                 android:text="비밀번호"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/PW_input"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -92,15 +99,56 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/PW_check_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/PW_view">
+
+            <EditText
+                android:id="@+id/PW_check_input"
+                android:layout_width="260dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_rect"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPassword"
+                android:text="비밀번호 입력"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="50dp"
+                android:text="비밀번호 재확인"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/PW_check_input"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <Button
             android:id="@+id/login_enter"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="재설정하기"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:text="확인"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/PW_check_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="50dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/round_rect_fill"
             />
 

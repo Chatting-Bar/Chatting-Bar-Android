@@ -10,9 +10,8 @@
     <!--    헤더 부분   -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="77dp"
+        android:layout_height="65dp"
         android:id = "@+id/header_bar"
-        android:background="@color/HeaderColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,7 +23,7 @@
             android:text="로그인"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/MainColor"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,18 +36,24 @@
             android:layout_height="50dp"
             android:text="X"
             android:textSize="30dp"
-            android:textColor="@color/white"
+            android:textColor="@color/MainColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="10dp"
             android:background="@android:color/transparent"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/LineColor"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    로그인 뷰   -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="300dp"
+        android:layout_width="340dp"
         android:layout_height="400dp"
         android:id = "@+id/Login_view"
         android:background="@drawable/round_rect"
@@ -61,14 +66,14 @@
             android:id="@+id/ID_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="60dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <EditText
                 android:id="@+id/ID_input"
-                android:layout_width="240dp"
+                android:layout_width="260dp"
                 android:layout_height="50dp"
                 android:background="@drawable/round_rect"
                 android:ems="10"
@@ -86,7 +91,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="50dp"
-                android:text="아이디"
+                android:text="이메일 주소"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/ID_input"
@@ -99,14 +105,14 @@
             android:id="@+id/PW_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/ID_view">
 
             <EditText
                 android:id="@+id/PW_input"
-                android:layout_width="240dp"
+                android:layout_width="260dp"
                 android:layout_height="50dp"
                 android:background="@drawable/round_rect"
                 android:ems="10"
@@ -125,6 +131,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="50dp"
                 android:text="비밀번호"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/PW_input"
@@ -135,37 +142,42 @@
 
         <Button
             android:id="@+id/login_enter"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
             android:text="로그인하기"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/PW_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="115dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/round_rect_fill"
             />
 
         <Button
             android:id="@+id/google_enter"
             android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="구글 로그인하기"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/login_enter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="55dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/round_rect_fill"
             />
 
         <Button
             android:id="@+id/sign_up"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="회원가입"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/google_enter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:background="@android:color/transparent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -175,7 +187,9 @@
         android:id="@+id/ID_PW_find"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="아이디/비밀번호 찾기"
+        android:text="비밀번호 재설정"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
         app:layout_constraintTop_toBottomOf="@id/Login_view"
         app:layout_constraintEnd_toEndOf="@id/Login_view"
         android:background="@android:color/transparent"/>

@@ -24,7 +24,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
-            android:background="None"
+            android:background="@android:color/transparent"
             android:text="X"
             android:textColor="@color/white"
             android:textSize="30dp"

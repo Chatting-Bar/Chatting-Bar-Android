@@ -41,13 +41,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ID_result"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".IdentityPW"
             android:exported="false">
             <meta-data
@@ -55,14 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".IdentityID"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ID_PW_find"
+            android:name=".PW_find"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
