@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,9 @@ import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.mail.MessagingException;
+import javax.mail.SendFailedException;
 
 public class PW_find extends AppCompatActivity {
 
@@ -44,6 +48,23 @@ public class PW_find extends AppCompatActivity {
                 } else if (email_input.getText().toString().isEmpty() || !isValidEmail(email_input.getText().toString())){
                     Toast.makeText(getApplicationContext(),"이메일을 잘못 입력했습니다", Toast.LENGTH_SHORT).show();
                 } else {
+                    StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                            .permitDiskReads()
+                            .permitDiskWrites()
+                            .permitNetwork().build());
+                    emailSender emailSender = new emailSender("osh000308@gmail.com", "dndswyvsevefbfqn");
+                    try {
+                        PW.setEnabled(false);
+                        emailSender.sendMail("채팅마차 인증번호입니다.", emailSender.getEmailCode(), email_input.getText().toString());
+                        Toast.makeText(getApplicationContext(),"인증번호가 전송되었습니다", Toast.LENGTH_SHORT).show();
+                    } catch (SendFailedException e) {
+                        Toast.makeText(getApplicationContext(), "이메일 형식이 잘못되었습니다.", Toast.LENGTH_SHORT).show();
+                    } catch (MessagingException e) {
+                        Toast.makeText(getApplicationContext(), "인터넷 연결을 확인해주십시오", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        PW.setEnabled(true);
+                        e.printStackTrace();
+                    }
                     Intent intent = new Intent(getApplicationContext(), IdentityPW.class);
                     startActivity(intent);
 
