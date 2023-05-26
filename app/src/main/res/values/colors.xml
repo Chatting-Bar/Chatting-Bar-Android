@@ -11,4 +11,5 @@
     <color name="MainColor">#DD7918</color>
     <color name="HeaderColor">#DD7918</color>
     <color name="gray">#959494</color>
+    <color name="light_gray">#F3F3F3</color>
 </resources>

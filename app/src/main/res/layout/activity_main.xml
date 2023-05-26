@@ -12,38 +12,24 @@
 
         android:id="@+id/Tool_Bar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="61dp"
         android:background="@color/HeaderColor"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!--        프로필이미지-->
-        <ImageView
-            android:id="@+id/Profile_Image"
-            android:layout_width="31dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="16dp"
+<!--        알림함-->
+
+        <ImageButton
+            android:id="@+id/alarm_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/ic_alarm" />
 
-        <!--        사용자 닉네임-->
-        <TextView
-            android:id="@+id/User_Nickname"
-            android:layout_width="65dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="8dp"
-            android:text="사용자 닉네임"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/Profile_Image"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.512" />
-
-        <!--        앱 타이틀-->
-
+<!--        앱 타이틀-->
         <TextView
             android:id="@+id/App_title"
             android:layout_width="wrap_content"
@@ -58,66 +44,216 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.517" />
 
-        <!--검색 버튼-->
-
-        <ImageButton
-            android:id="@+id/search_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.966"
-            app:layout_constraintStart_toEndOf="@+id/App_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_search" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- 메인 화면 리스트뷰 -->
 
-    <ListView
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="620dp"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:orientation="vertical"
-        android:scrollbars="vertical" />
+        android:layout_height="605dp">
 
-    <!-- 바텀바 -->
+        <LinearLayout
+            android:id="@+id/list_obj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
+            <View
+                android:id="@+id/division_line"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/light_gray"
+                />
+
+            <TextView
+                android:id="@+id/newest_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="최신순"
+                android:padding="15dp"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/round_rect"
+                    android:orientation="vertical"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="30dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="운영시간"
+                                android:textColor="@color/black"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/operating_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="18:00 ~ 20:00"
+                                android:textColor="@color/black"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="메   뉴"
+                                android:padding="5dp"
+                                android:textColor="@color/black"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/title_text"
+                                android:layout_width="187dp"
+                                android:layout_height="match_parent"
+                                android:text="오늘 축구 경기 같이 볼 사람!"
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="인   원"
+                                android:padding="5dp"
+                                android:textColor="@color/black"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/title_text2"
+                                android:layout_width="10dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="15 / 16"
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="주방장"
+                                android:padding="5dp"
+                                android:textColor="@color/black"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/title_text3"
+                                android:layout_width="10dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="배수호"
+                                android:textColor="@color/black"
+                                android:textSize="15dp" />
+                        </TableRow>
+                    </TableLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+<!--    바텀바-->
     <LinearLayout
         android:id="@+id/Bottom_Bar"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/white">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
 
         <!--채팅기록 버튼-->
 
         <Button
             android:id="@+id/chattingList_button"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="채팅기록" />
+            android:drawableTop="@drawable/ic_chat_log"
+            android:text="기록"
+            android:textStyle="bold" />
 
         <!--홈 버튼-->
 
         <Button
-            android:id="@+id/home_button"
+            android:id="@+id/on_home_button"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="홈" />
+            android:drawableTop="@drawable/ic_home"
+            android:text="홈"
+            android:textColor="@color/HeaderColor"
+            android:textStyle="bold" />
 
-        <!--설정 버튼 -->
+        <!--검색 버튼 -->
 
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/ic_search"
+            android:text="검색" />
+
+
+<!--        설정버튼-->
         <Button
             android:id="@+id/setting_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/ic_settings"
             android:text="설정" />
     </LinearLayout>
 
