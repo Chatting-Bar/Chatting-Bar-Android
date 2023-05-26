@@ -78,7 +78,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="text"
-                android:text="이름"
+                android:hint="이름"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -116,8 +116,8 @@
                 android:background="@drawable/round_rect"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="number"
-                android:text="1234"
+                android:inputType="text"
+                android:hint="닉네임"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -140,7 +140,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/Email_view"
+            android:id="@+id/email_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -149,14 +149,14 @@
             app:layout_constraintTop_toBottomOf="@+id/nickname_view">
 
             <EditText
-                android:id="@+id/Email_input"
+                android:id="@+id/email_input"
                 android:layout_width="260dp"
                 android:layout_height="50dp"
                 android:background="@drawable/round_rect"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="number"
-                android:text="1234"
+                android:inputType="textEmailAddress"
+                android:hint="이메일"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -172,7 +172,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/Email_input"
+                app:layout_constraintStart_toStartOf="@+id/email_input"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -185,7 +185,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Email_view">
+            app:layout_constraintTop_toBottomOf="@+id/email_view">
 
             <EditText
                 android:id="@+id/PW_input"
@@ -195,7 +195,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="textPassword"
-                android:text="1234"
+                android:hint="비밀번호"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -234,7 +234,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="textPassword"
-                android:text="1234"
+                android:hint="비밀번호 재입력"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -257,7 +257,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/login_enter"
+            android:id="@+id/sign_enter"
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:text="가입하기"

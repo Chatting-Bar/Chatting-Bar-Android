@@ -78,8 +78,8 @@
                 android:background="@drawable/round_rect"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="text"
-                android:text="아이디 입력"
+                android:inputType="textEmailAddress"
+                android:hint="아이디"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +118,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="textPassword"
-                android:text="비밀번호 입력"
+                android:hint="비밀번호"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -184,7 +184,7 @@
 
     <!--    아이디 비번찾기    -->
     <Button
-        android:id="@+id/ID_PW_find"
+        android:id="@+id/PW_find"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="비밀번호 재설정"
