@@ -6,48 +6,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    상단바-->
+    <!-- 상단바 -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:id="@+id/Tool_Bar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="61dp"
+        android:background="@color/HeaderColor"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!--        프로필이미지-->
-        <ImageView
-            android:id="@+id/Profile_Image"
-            android:layout_width="31dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="16dp"
+        <!--        알림함-->
+
+        <ImageButton
+            android:id="@+id/alarm_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <!--        사용자 닉네임-->
-        <TextView
-            android:id="@+id/User_Nickname"
-            android:layout_width="65dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="8dp"
-            android:text="사용자 닉네임"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/Profile_Image"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.512" />
+            app:srcCompat="@drawable/ic_alarm" />
 
         <!--        앱 타이틀-->
-
         <TextView
-            android:id="@+id/activity_name"
+            android:id="@+id/App_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="참여기록"
+            android:text="채팅마차"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -57,74 +44,189 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.517" />
 
-        <!--검색 버튼-->
-
-        <ImageButton
-            android:id="@+id/search_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.966"
-            app:layout_constraintStart_toEndOf="@+id/App_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_search" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="최근참여기록"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="20dp"/>
+    <!-- 메인 화면 리스트뷰 -->
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="574dp"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:orientation="vertical"
-        android:scrollbars="vertical" />
 
-    <!-- 바텀바 -->
+    <!--    바텀바-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="603dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:background="@color/CloseColor">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_profileImg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="주방장"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="오늘 축구 응원 모임" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_profileImg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="주방장"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="오늘 축구 응원 모임" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_profileImg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="주방장"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="오늘 축구 응원 모임" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/Bottom_Bar"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/HeaderColor">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
 
         <!--채팅기록 버튼-->
 
         <Button
             android:id="@+id/chattingList_button"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="채팅기록" />
+            android:drawableTop="@drawable/ic_chat_log_on"
+            android:text="기록"
+            android:textColor="@color/HeaderColor"
+            android:textStyle="bold" />
 
         <!--홈 버튼-->
 
         <Button
             android:id="@+id/home_button"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="홈" />
+            android:drawableTop="@drawable/ic_home_off"
+            android:text="홈"
+            android:textStyle="bold" />
 
-        <!--설정 버튼 -->
+        <!--검색 버튼 -->
 
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/ic_search"
+            android:text="검색"
+            android:textStyle="bold"/>
+
+
+        <!--        설정버튼-->
         <Button
             android:id="@+id/setting_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="설정" />
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/ic_settings"
+            android:text="설정"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 </LinearLayout>
