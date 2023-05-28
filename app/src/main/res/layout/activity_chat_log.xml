@@ -47,21 +47,104 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- 메인 화면 리스트뷰 -->
 
-
-    <!--    바텀바-->
-
+<!--채팅 기록 뷰-->
     <ScrollView
+        android:id="@+id/chatlogView"
         android:layout_width="match_parent"
         android:layout_height="603dp">
 
         <LinearLayout
+            android:id="@+id/chatlogLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+<!--            닫힌 방-->
             <LinearLayout
+                android:id="@+id/chatLog1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/CloseColor"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/chatLogUserProfileImg1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_profileimg" />
+
+                <LinearLayout
+                    android:id="@+id/nick_and_menu1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/host_nickname1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="주방장1"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/chatRoomMenu1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="오늘 축구 응원 모임1" />
+                </LinearLayout>
+            </LinearLayout>
+
+<!--            열린방-->
+            <LinearLayout
+                android:id="@+id/chatLog2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/chatLogUserProfileImg2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_profileimg" />
+
+                <LinearLayout
+                    android:id="@+id/nick_and_menu2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/host_nickname2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="주방장2"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/chatRoomMenu2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="오늘 축구 응원 모임2" />
+                </LinearLayout>
+            </LinearLayout>
+
+<!--            닫힌방-->
+            <LinearLayout
+                android:id="@+id/chatLog3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -69,109 +152,41 @@
                 android:background="@color/CloseColor">
 
                 <ImageView
-                    android:id="@+id/imageView40"
+                    android:id="@+id/chatLogUserProfileImg3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/ic_profileimg" />
 
                 <LinearLayout
+                    android:id="@+id/nick_and_menu3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView100"
+                        android:id="@+id/host_nickname3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="주방장"
+                        android:text="주방장3"
                         android:textColor="@color/black"
                         android:textSize="17dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginLeft="10dp"/>
 
                     <TextView
-                        android:id="@+id/textView110"
+                        android:id="@+id/chatRoomMenu3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="오늘 축구 응원 모임" />
+                        android:text="오늘 축구 응원 모임3" />
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="20dp">
-
-                <ImageView
-                    android:id="@+id/imageView41"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_profileimg" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView101"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="주방장"
-                        android:textColor="@color/black"
-                        android:textSize="17dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView111"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="오늘 축구 응원 모임" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="20dp">
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_profileimg" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="주방장"
-                        android:textColor="@color/black"
-                        android:textSize="17dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="오늘 축구 응원 모임" />
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
+<!--    바텀바-->
     <LinearLayout
         android:id="@+id/Bottom_Bar"
         android:layout_width="match_parent"
