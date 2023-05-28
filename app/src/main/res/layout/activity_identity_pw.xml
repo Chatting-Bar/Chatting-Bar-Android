@@ -76,7 +76,7 @@
                 android:background="@drawable/round_rect"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="number"
+                android:inputType="text"
                 android:hint="인증번호"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
