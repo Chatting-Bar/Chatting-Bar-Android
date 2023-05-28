@@ -54,6 +54,9 @@ public class Sign_up extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "비밀번호가 너무 짧습니다(최소 6자리)", Toast.LENGTH_SHORT).show();
                 }
                 else if (pw_input.getText().toString().equals(pw_check_input.getText().toString())) {
+                    Intent intent = new Intent(getApplicationContext(), Topic_set.class);
+                    startActivity(intent);
+
                     finish();
                 } else {
                     Toast.makeText(getApplicationContext(),"재입력한 비밀번호가 다릅니다", Toast.LENGTH_SHORT).show();
