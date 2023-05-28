@@ -42,8 +42,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< Updated upstream
             app:layout_constraintStart_toEndOf="@id/Profile_Image"
             app:layout_constraintTop_toTopOf="parent">
+=======
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+>>>>>>> Stashed changes
 
             <TextView
                 android:id="@+id/email"
@@ -171,6 +176,7 @@
             android:layout_marginBottom="10dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<<<<<<< Updated upstream
     <Button
         android:id="@+id/PW_change"
         android:layout_width="340dp"
@@ -180,6 +186,255 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"/>
+=======
+
+    <LinearLayout
+        android:id="@+id/settingList"
+        android:layout_width="match_parent"
+        android:layout_height="605dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    app:srcCompat="@drawable/ic_profileimg" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp"
+                    android:background="@drawable/round_rect_fill"
+                    android:text="프로필 사진 변경"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="10dp"
+                    android:text="test123@mju.ac.kr"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="테스트 닉네임" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/division_line7"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/light_gray" />
+
+        <LinearLayout
+            android:id="@+id/edit_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="271dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="관심주제"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/edit_tag_button"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/round_rect_fill"
+                        android:marginRight="20dp"
+                        android:text="편집"
+                        android:textSize="10dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_rect"
+                    android:baselineAligned="false"
+                    android:padding="15dp"
+                    app:columnCount="6"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="# Sports " />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="# Game " />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="# Music " />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="# Study " />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="# Food " />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="# Photo " />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="# Football " />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="# Book " />
+
+
+                </androidx.gridlayout.widget.GridLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/division_line6"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/light_gray" />
+
+        <LinearLayout
+            android:id="@+id/pw_change_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="20dp"
+                android:text="비밀번호 변경"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/division_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/light_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="20dp"
+                android:text="구독 알림 ON/OFF"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/division_line3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/light_gray" />
+
+        <LinearLayout
+            android:id="@+id/_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="20dp"
+                android:text="로그아웃"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--    바텀바-->
+>>>>>>> Stashed changes
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Push_View"
@@ -191,6 +446,7 @@
         android:layout_marginTop="10dp">
 
         <Button
+<<<<<<< Updated upstream
             android:id="@+id/Push_ON_OFF"
             android:layout_width="340dp"
             android:layout_height="50dp"
@@ -200,6 +456,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+            android:id="@+id/chattingList_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_chat_log"
+            android:text="기록"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+>>>>>>> Stashed changes
 
     <Button
         android:id="@+id/logout"
@@ -212,4 +479,21 @@
         app:layout_constraintTop_toBottomOf="@+id/Push_View" />
 
 
+<<<<<<< Updated upstream
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+        <!--        설정버튼-->
+        <Button
+            android:id="@+id/setting_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:drawableTop="@drawable/ic_settings_on"
+            android:text="설정"
+            android:textColor="@color/HeaderColor"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+</LinearLayout>
+>>>>>>> Stashed changes
