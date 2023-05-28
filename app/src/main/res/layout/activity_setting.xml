@@ -186,11 +186,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     <!-- 메인 화면 리스트뷰 -->
 
 
     <!--    바텀바-->
 =======
+=======
+>>>>>>> parent of 1f08781 ([FIX] 오류 파일명 변경, 설정 액티비티 디자인 적용)
     <Button
         android:id="@+id/PW_change"
         android:layout_width="340dp"
@@ -200,11 +203,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"/>
+<<<<<<< HEAD
 >>>>>>> parent of 1f08781 ([FIX] 오류 파일명 변경, 설정 액티비티 디자인 적용)
 
     <LinearLayout
         android:id="@+id/Bottom_Bar"
         android:layout_width="match_parent"
+=======
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Push_View"
+        android:layout_width="wrap_content"
+>>>>>>> parent of 1f08781 ([FIX] 오류 파일명 변경, 설정 액티비티 디자인 적용)
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="horizontal">
@@ -212,6 +222,7 @@
         <!--채팅기록 버튼-->
 
         <Button
+<<<<<<< HEAD
 <<<<<<< HEAD
             android:id="@+id/chattingList_button"
             style="?android:attr/borderlessButtonStyle"
@@ -223,6 +234,8 @@
             android:textColor="@color/HeaderColor"
             android:textStyle="bold" />
 =======
+=======
+>>>>>>> parent of 1f08781 ([FIX] 오류 파일명 변경, 설정 액티비티 디자인 적용)
             android:id="@+id/Push_ON_OFF"
             android:layout_width="340dp"
             android:layout_height="50dp"
@@ -232,6 +245,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+<<<<<<< HEAD
 >>>>>>> parent of 1f08781 ([FIX] 오류 파일명 변경, 설정 액티비티 디자인 적용)
 
         <!--홈 버튼-->
@@ -245,6 +259,8 @@
             android:drawableTop="@drawable/ic_home_off"
             android:text="홈"
             android:textStyle="bold" />
+=======
+>>>>>>> parent of 1f08781 ([FIX] 오류 파일명 변경, 설정 액티비티 디자인 적용)
 
         <!--검색 버튼 -->
 
@@ -260,6 +276,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         <!--        설정버튼-->
         <Button
             android:id="@+id/setting_button"
@@ -273,6 +290,9 @@
     </LinearLayout>
 
 </LinearLayout>
+=======
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> parent of 1f08781 ([FIX] 오류 파일명 변경, 설정 액티비티 디자인 적용)
 =======
 </androidx.constraintlayout.widget.ConstraintLayout>
 >>>>>>> parent of 1f08781 ([FIX] 오류 파일명 변경, 설정 액티비티 디자인 적용)
