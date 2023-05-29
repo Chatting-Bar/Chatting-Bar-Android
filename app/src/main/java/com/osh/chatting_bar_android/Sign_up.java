@@ -79,6 +79,11 @@ public class Sign_up extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<SignUpResponse> call, Throwable t) {
                             Log.d("test", "실패: "+ t.getMessage());
+
+                            Intent intent = new Intent(getApplicationContext(), Topic_set.class);
+                            startActivity(intent);
+
+                            finish();
                         }
                     });
                 } else {
