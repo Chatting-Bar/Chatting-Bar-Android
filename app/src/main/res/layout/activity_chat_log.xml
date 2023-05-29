@@ -52,7 +52,8 @@
     <ScrollView
         android:id="@+id/chatlogView"
         android:layout_width="match_parent"
-        android:layout_height="603dp">
+        android:layout_height="603dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/chatlogLayout"
