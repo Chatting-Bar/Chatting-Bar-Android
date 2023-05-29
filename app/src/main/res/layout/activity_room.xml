@@ -49,12 +49,16 @@
 <!--        메뉴버튼-->
         <Button
             android:id="@+id/menu_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="메뉴"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="78dp"
+            android:layout_height="52dp"
+
+            android:layout_marginEnd="4dp"
+            android:drawableTop="@drawable/ic_menu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.56" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -74,7 +78,7 @@
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@drawable/ic_profileimg" />
 
         <!--        상대 닉네임-->
 
@@ -97,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:background="@drawable/round_rect_fill"
+            android:background="@drawable/chat_layout"
             android:paddingLeft="12dp"
             android:paddingTop="4dp"
             android:paddingRight="12dp"
@@ -136,7 +140,7 @@
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@drawable/ic_profileimg" />
 
         <!--        상대 닉네임-->
 
@@ -159,7 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:background="@drawable/round_rect_fill"
+            android:background="@drawable/chat_layout"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:paddingLeft="12dp"
@@ -198,7 +202,7 @@
             android:id="@+id/chatting_sample3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_rect"
+            android:background="@drawable/my_chat_layout"
             android:paddingLeft="12dp"
             android:paddingTop="4dp"
             android:paddingRight="12dp"
@@ -224,22 +228,28 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/chat_margin"
         android:layout_width="match_parent"
-        android:layout_height="384dp">
+        android:layout_height="388dp">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--    채팅 입력바-->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/chatInput_Bar"
-        android:background="@color/HeaderColor"
+        android:background="@color/messagebarColor"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/additionalMenu_button"
             android:layout_width="44dp"
             android:layout_height="42dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="3dp"
             android:text="+"
+
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="20dp"
+            android:background="@color/messagebarColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -247,32 +257,47 @@
 <!--        채팅 입력-->
         <EditText
             android:id="@+id/chat_input"
-            android:layout_width="302dp"
-            android:layout_height="38dp"
-            android:background="@drawable/round_rect"
+            android:layout_width="298dp"
+            android:layout_height="56dp"
+            android:background="@drawable/round_rect_white"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textMultiLine"
             android:paddingLeft="12dp"
             android:paddingTop="4dp"
             android:paddingRight="12dp"
             android:paddingBottom="4dp"
             android:text=""
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+
         <Button
             android:id="@+id/send_button"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="51dp"
             android:layout_height="39dp"
             android:layout_marginEnd="4dp"
             android:text="전송"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.55" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    </LinearLayout>
 </LinearLayout>
