@@ -43,6 +43,8 @@ public class PW_find extends AppCompatActivity {
             public void onClick(View v) {
                 EditText name_input = findViewById(R.id.name_input);
                 EditText email_input = findViewById(R.id.email_input);
+                emailSender emailSender = new emailSender("osh000308@gmail.com", "dndswyvsevefbfqn"); //이메일 생성
+                String code = emailSender.getEmailCode();
                 if (name_input.getText().toString().isEmpty() ){
                     Toast.makeText(getApplicationContext(),"이름을 잘못 입력했습니다", Toast.LENGTH_SHORT).show();
                 } else if (email_input.getText().toString().isEmpty() || !isValidEmail(email_input.getText().toString())){
@@ -52,10 +54,9 @@ public class PW_find extends AppCompatActivity {
                             .permitDiskReads()
                             .permitDiskWrites()
                             .permitNetwork().build());
-                    emailSender emailSender = new emailSender("osh000308@gmail.com", "dndswyvsevefbfqn");
                     try {
                         PW.setEnabled(false);
-                        emailSender.sendMail("채팅마차 인증번호입니다.", emailSender.getEmailCode(), email_input.getText().toString());
+                        emailSender.sendMail("채팅마차 인증번호입니다.", code, email_input.getText().toString());
                         Toast.makeText(getApplicationContext(),"인증번호가 전송되었습니다", Toast.LENGTH_SHORT).show();
                     } catch (SendFailedException e) {
                         Toast.makeText(getApplicationContext(), "이메일 형식이 잘못되었습니다.", Toast.LENGTH_SHORT).show();
@@ -66,6 +67,7 @@ public class PW_find extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     Intent intent = new Intent(getApplicationContext(), IdentityPW.class);
+                    intent.putExtra("code", code);
                     startActivity(intent);
 
                     finish();
