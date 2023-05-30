@@ -2,18 +2,18 @@ package com.osh.chatting_bar_android.data_model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SignUpResponse {
+public class BaseResponse {
     @SerializedName("check")
     private boolean check;
 
     @SerializedName("information")
-    private SignUpInformation information;
+    private Information information;
 
     public boolean getCheck() {
         return check;
     }
 
-    public SignUpInformation getInformation() {
+    public Information getInformation() {
         return information;
     }
 
@@ -24,7 +24,7 @@ public class SignUpResponse {
     }
 }
 
-class SignUpInformation {
+class Information {
     @SerializedName("message")
     private String messeage;
 

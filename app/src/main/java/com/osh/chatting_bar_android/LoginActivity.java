@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (response.isSuccessful()) {
                                 Log.d("test", "로그인: " + response.body().toString() +", code: "+ response.code());
                                 editor.putString("AccessToken", response.body().getInformation().getAccessToken());
+                                editor.putString("RefreshToken", response.body().getInformation().getRefreshToken());
                                 editor.apply();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);

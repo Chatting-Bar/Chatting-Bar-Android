@@ -12,8 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.osh.chatting_bar_android.data_model.BaseResponse;
 import com.osh.chatting_bar_android.data_model.SignUpRequest;
-import com.osh.chatting_bar_android.data_model.SignUpResponse;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -64,11 +64,11 @@ public class Sign_up extends AppCompatActivity {
                 else if (pw_input.getText().toString().equals(pw_check_input.getText().toString())) {
                     SignUpRequest signUpRequest = new SignUpRequest(nickname_input.getText().toString(),
                             email_input.getText().toString(), pw_input.getText().toString());
-                    Call<SignUpResponse> call = RetrofitService.getApiService().sign_up(signUpRequest);
-                    call.enqueue(new Callback<SignUpResponse>(){
+                    Call<BaseResponse> call = RetrofitService.getApiService().sign_up(signUpRequest);
+                    call.enqueue(new Callback<BaseResponse>(){
                         //콜백 받는 부분
                         @Override
-                        public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                        public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                             if (response.isSuccessful()) {
                                 Log.d("test", response.body().toString() +", code: "+ response.code());
                                 Intent intent = new Intent(getApplicationContext(), Topic_set.class);
@@ -82,7 +82,7 @@ public class Sign_up extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<SignUpResponse> call, Throwable t) {
+                        public void onFailure(Call<BaseResponse> call, Throwable t) {
                             Log.d("test", "실패: "+ t.getMessage());
 
                             Toast.makeText(getApplicationContext(), "네트워크 문제로 회원가입에 실패했습니다", Toast.LENGTH_SHORT).show();
