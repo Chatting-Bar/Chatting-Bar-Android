@@ -6,11 +6,12 @@ import com.google.gson.GsonBuilder;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
-    private static final String BASE_URL = "http://www.chatbar.kro.kr";
+    private static final String BASE_URL = "http://www.chatbar.kro.kr:8080";
 
     public static RetrofitInterface getApiService(){return getInstance().create(RetrofitInterface.class);}
 
