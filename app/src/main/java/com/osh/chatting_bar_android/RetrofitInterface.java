@@ -6,9 +6,16 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface RetrofitInterface {
+    @Headers("Content-Type: application/json")
     @POST("/auth/sign-up")
     Call<SignUpResponse> sign_up(@Body SignUpRequest signUpRequest);
+
+    @Headers("Content-Type: application/json")
+    @POST("/auth/sign-in")
+    Call<SignInResponse> sign_in(@Body SignInRequest signInRequest);
 }
