@@ -6,16 +6,33 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class ChatLogActivity extends AppCompatActivity {
+    private ChatLogRecyclerViewAdapter ChatLogRecyclerViewAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_log);
 
         InitBtn();
+        InitChatLog();
     }
 
+    protected void InitChatLog(){
+        RecyclerView recyclerView = findViewById(R.id.ChatLog_recyclerView);
+
+        ChatLogRecyclerViewAdapter = new ChatLogRecyclerViewAdapter(this, getLogList());
+        recyclerView.setAdapter(ChatLogRecyclerViewAdapter);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    }
     protected void InitBtn()
     {
         //채팅 기록
@@ -62,5 +79,9 @@ public class ChatLogActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    private List<String> getLogList() {
+        return Arrays.asList("배수호", "오시현", "백계환", "배종찬", "신초은");
+
     }
 }
