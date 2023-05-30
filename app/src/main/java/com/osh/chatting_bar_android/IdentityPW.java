@@ -4,15 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
+//본인확인
 public class IdentityPW extends AppCompatActivity {
 
+    String code; //인증번호
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_identity_pw);
+        
+        Intent intent = getIntent();
+        code = intent.getStringExtra("code");
+        Log.d("test","인증번호 확인: "+code);
 
         InitBtn();
     }
@@ -30,10 +38,14 @@ public class IdentityPW extends AppCompatActivity {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PW_result.class);
-                startActivity(intent);
+                EditText number_input = findViewById(R.id.number_input);
+                Log.d("test","인증번호 체크: "+code.equals(number_input.getText().toString()));
+                if (!code.isEmpty() && code.equals(number_input.getText().toString())) {
+                    Intent intent = new Intent(getApplicationContext(), PW_result.class);
+                    startActivity(intent);
 
-                finish();
+                    finish();
+                }
             }
         });
     }

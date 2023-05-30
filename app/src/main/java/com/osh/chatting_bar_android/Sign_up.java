@@ -4,14 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
+import com.osh.chatting_bar_android.data_model.SignUpRequest;
+import com.osh.chatting_bar_android.data_model.SignUpResponse;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Sign_up extends AppCompatActivity {
 
@@ -54,7 +61,31 @@ public class Sign_up extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "비밀번호가 너무 짧습니다(최소 6자리)", Toast.LENGTH_SHORT).show();
                 }
                 else if (pw_input.getText().toString().equals(pw_check_input.getText().toString())) {
-                    finish();
+                    SignUpRequest signUpRequest = new SignUpRequest(nickname_input.getText().toString(),
+                            email_input.getText().toString(), pw_input.getText().toString());
+                    Call<SignUpResponse> call = RetrofitService.getApiService().sign_up(signUpRequest);
+                    call.enqueue(new Callback<SignUpResponse>(){
+                        //콜백 받는 부분
+                        @Override
+                        public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                            Log.d("test", response +", code: "+ response.code());
+
+                            Intent intent = new Intent(getApplicationContext(), Topic_set.class);
+                            startActivity(intent);
+
+                            finish();
+                        }
+
+                        @Override
+                        public void onFailure(Call<SignUpResponse> call, Throwable t) {
+                            Log.d("test", "실패: "+ t.getMessage());
+
+                            Intent intent = new Intent(getApplicationContext(), Topic_set.class);
+                            startActivity(intent);
+
+                            finish();
+                        }
+                    });
                 } else {
                     Toast.makeText(getApplicationContext(),"재입력한 비밀번호가 다릅니다", Toast.LENGTH_SHORT).show();
                 }
