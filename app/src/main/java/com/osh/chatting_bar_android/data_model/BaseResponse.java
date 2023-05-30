@@ -2,7 +2,7 @@ package com.osh.chatting_bar_android.data_model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SignUpResponse {
+public class BaseResponse {
     @SerializedName("check")
     private boolean check;
 

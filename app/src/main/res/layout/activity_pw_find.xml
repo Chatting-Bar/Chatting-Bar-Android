@@ -8,11 +8,11 @@
 
     <!--    헤더 부분   -->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_bar"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:id = "@+id/header_bar"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -20,10 +20,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="비밀번호 재설정"
-            android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="@color/MainColor"
             android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,20 +45,20 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/LineColor"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    비밀번호 찾기   -->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PW_view"
         android:layout_width="340dp"
         android:layout_height="300dp"
-        android:id = "@+id/PW_view"
         android:background="@drawable/round_rect"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/name_view"
@@ -76,8 +76,8 @@
                 android:background="@drawable/round_rect"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="textPersonName"
                 android:hint="이름"
+                android:inputType="textPersonName"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -90,8 +90,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="50dp"
                 android:text="이름"
-                android:textStyle="bold"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/name_input"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -115,8 +115,8 @@
                 android:background="@drawable/round_rect"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="textEmailAddress"
                 android:hint="이메일"
+                android:inputType="textEmailAddress"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -129,12 +129,11 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="50dp"
                 android:text="이메일 주소"
-                android:textStyle="bold"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/email_input"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -142,15 +141,14 @@
             android:id="@+id/PW_enter"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:text="비밀번호 재설정"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/email_view"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_rect_fill"
-            />
+            android:text="비밀번호 재설정"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
