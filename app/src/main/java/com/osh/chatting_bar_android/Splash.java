@@ -27,7 +27,7 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run()
             {
-                if (pref.getString("Token", "").isEmpty()) { //토큰이 없으면 로그인 화면으로 전환
+                if (pref.getString("AccessToken", "").isEmpty()) { //토큰이 없으면 로그인 화면으로 전환
                     //new Intent(현재 context, 이동할 activity)
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 
