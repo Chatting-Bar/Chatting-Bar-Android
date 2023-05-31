@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         ChatRoomRecyclerViewAdapter = new ChatRoomRecyclerViewAdapter(this, chatRoomList);
         recyclerView.setAdapter(ChatRoomRecyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
 
     }
