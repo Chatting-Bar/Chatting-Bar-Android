@@ -1,9 +1,12 @@
 package com.osh.chatting_bar_android;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,6 +44,21 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.recent_text);
+
+            LinearLayout recentBtn = itemView.findViewById(R.id.recent_button);
+            recentBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), MainActivity.class);
+                    intent.putExtra("search", textView.getText().toString());
+
+                    ((SearchActivity)v.getContext()).updateSearchList(textView.getText().toString());
+
+                    v.getContext().startActivity(intent);
+
+                   ((Activity)v.getContext()).finish();
+                }
+            });
         }
     }
 }
