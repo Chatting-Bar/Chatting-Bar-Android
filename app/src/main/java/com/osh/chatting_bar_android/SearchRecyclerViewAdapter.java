@@ -49,6 +49,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
             recentBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    MainActivity.mainActivity.finish();
                     Intent intent = new Intent(v.getContext(), MainActivity.class);
                     intent.putExtra("search", textView.getText().toString());
 
