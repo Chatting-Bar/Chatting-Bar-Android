@@ -94,6 +94,7 @@ public class SettingActivity extends AppCompatActivity {
                                 editor.clear();
                                 editor.apply();
                                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                MainActivity.mainActivity.finish();
                                 startActivity(intent);
 
                                 finish();

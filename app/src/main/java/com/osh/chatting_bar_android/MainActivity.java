@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,11 +19,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private ChatRoomRecyclerViewAdapter ChatRoomRecyclerViewAdapter;
 
-
+    public static Activity mainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mainActivity = MainActivity.this;
 
         InitBtn();
         InitRoomList(getNewestList(),findViewById(R.id.newest_recyclerView));
@@ -83,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                 startActivity(intent);
-
-                finish();
             }
         });
         //설정
@@ -96,6 +99,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
                 finish();
+            }
+        });
+        //방만들기
+        FloatingActionButton create_btn = findViewById(R.id.fab_btn);
+        create_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CreateRoomActivity.class);
+                startActivity(intent);
             }
         });
     }

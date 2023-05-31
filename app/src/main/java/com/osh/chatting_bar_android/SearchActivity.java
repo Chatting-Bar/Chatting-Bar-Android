@@ -70,6 +70,7 @@ public class SearchActivity extends AppCompatActivity {
         exit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity.mainActivity.finish();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
 
