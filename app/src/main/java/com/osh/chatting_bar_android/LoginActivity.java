@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loginActivity = LoginActivity.this;
 
-        pref = getSharedPreferences("user", Activity.MODE_PRIVATE);
+        pref = User.getInstance().getPreferences();
         editor = pref.edit();
 
         InitBtn();
@@ -73,9 +73,8 @@ public class LoginActivity extends AppCompatActivity {
                         public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                             if (response.isSuccessful()) {
                                 Log.d("test", "로그인: " + response.body().toString() +", code: "+ response.code());
-                                editor.putString("AccessToken", response.body().getInformation().getAccessToken());
-                                editor.putString("RefreshToken", response.body().getInformation().getRefreshToken());
-                                editor.apply();
+                                editor.putString("AccessToken", response.body().getInformation().getAccessToken()).apply();
+                                editor.putString("RefreshToken", response.body().getInformation().getRefreshToken()).apply();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
 
