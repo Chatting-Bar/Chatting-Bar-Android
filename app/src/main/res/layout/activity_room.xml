@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-<!--나가기버튼-->
+        <!--나가기버튼-->
         <Button
             android:id="@+id/Exit_button"
             android:layout_width="50dp"
@@ -31,7 +31,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-<!--방 이름-->
+        <!--방 이름-->
         <TextView
             android:id="@+id/room_name"
             android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        메뉴버튼-->
+        <!--        메뉴버튼-->
         <Button
             android:id="@+id/menu_button"
             style="?android:attr/borderlessButtonStyle"
@@ -62,177 +62,22 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    상대 채팅 샘플 1-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/chat_sample1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatting_recyclerView"
+
+        android:windowSoftInputMode="adjustResize"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="579dp" />
 
-        <!--        상대 프로필 사진-->
+    <!--    상대 채팅 샘플 1-->
 
-        <ImageView
-            android:id="@+id/ProfileImg_sample1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/ic_profileimg" />
+    <!--    샘플2-->
 
-        <!--        상대 닉네임-->
+    <!--   내 채팅 샘플-->
 
-        <TextView
-            android:id="@+id/anyoneText_sample1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="12dp"
-            android:text="누군가"
-            android:textColor="@color/black"
-            android:textSize="10dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/ProfileImg_sample1"
-            app:layout_constraintTop_toTopOf="parent" />
+    <!--    공백-->
 
-<!--        대화 텍스트 박스-->
-        <TextView
-            android:id="@+id/chatting_sample1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/chat_layout"
-            android:paddingLeft="12dp"
-            android:paddingTop="4dp"
-            android:paddingRight="12dp"
-            android:paddingBottom="4dp"
-            android:text="안녕하세요"
-            android:textSize="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ProfileImg_sample1"
-            app:layout_constraintTop_toBottomOf="@+id/anyoneText_sample1" />
-
-<!--        전송 시간-->
-        <TextView
-            android:id="@+id/textTime_sample1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:text="12:22"
-            android:textSize="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chatting_sample1" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--    샘플2-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/chat_sample2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <!--        상대 프로필 사진-->
-
-        <ImageView
-            android:id="@+id/ProfileImg_sample2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/ic_profileimg" />
-
-        <!--        상대 닉네임-->
-
-        <TextView
-            android:id="@+id/anyoneText_sample2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="12dp"
-            android:text="누군가"
-            android:textColor="@color/black"
-            android:textSize="10dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/ProfileImg_sample2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!--        상대 채팅-->
-        <TextView
-            android:id="@+id/chatting_sample2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/chat_layout"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:text="반갑습니다~~~~~\n잘부탁드립니다!"
-            android:textSize="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ProfileImg_sample2"
-            app:layout_constraintTop_toBottomOf="@+id/anyoneText_sample2" />
-
-<!--        채팅 전송 시간-->
-        <TextView
-            android:id="@+id/textTime_sample2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:text="12:22"
-            android:textSize="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chatting_sample2" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--   내 채팅 샘플-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/chat_sample3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp">
-
-
-        <!-- 내 채팅-->
-
-        <!--        채팅 전송 시간-->
-        <TextView
-            android:id="@+id/chatting_sample3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/my_chat_layout"
-            android:paddingLeft="12dp"
-            android:paddingTop="4dp"
-            android:paddingRight="12dp"
-            android:paddingBottom="4dp"
-            android:text="반갑습니다~~~~~\n잘부탁드립니다!"
-            android:textSize="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textTime_sample3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:text="12:22"
-            android:textSize="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/chatting_sample3" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--    공백-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/chat_margin"
-        android:layout_width="match_parent"
-        android:layout_height="388dp">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--    채팅 입력바-->
+    <!--    채팅 입력바-->
     <LinearLayout
         android:id="@+id/chatInput_Bar"
         android:background="@color/messagebarColor"
@@ -274,15 +119,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editTextTextMultiLine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine" />
 
         <Button
             android:id="@+id/send_button"
