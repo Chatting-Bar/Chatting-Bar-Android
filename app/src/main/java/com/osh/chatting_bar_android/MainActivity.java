@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void InitBtn()
     {
+
+
         Button searchcancel_btn = findViewById(R.id.searchCancel_button);
         searchcancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +124,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CreateRoomActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // 채팅방 테스트 케이스
+        ImageButton alarm_btn = findViewById(R.id.alarm_button);
+        alarm_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
                 startActivity(intent);
             }
         });
