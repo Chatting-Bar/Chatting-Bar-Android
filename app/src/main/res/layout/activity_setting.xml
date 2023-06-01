@@ -64,14 +64,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/userProfileImg"
@@ -118,7 +118,37 @@
 
         </LinearLayout>
 
-<!--        구분선-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+
+                android:id="@+id/subscriberList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:text="구독자 목록"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/editsubscriber_button"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_rect_fill"
+                android:text="편집"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!--        구분선-->
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
