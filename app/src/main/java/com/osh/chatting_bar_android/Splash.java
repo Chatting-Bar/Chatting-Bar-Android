@@ -8,6 +8,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.osh.chatting_bar_android.data_model.BaseResponse;
+import com.osh.chatting_bar_android.data_model.UserResponse;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Splash extends AppCompatActivity {
     SharedPreferences pref;
@@ -18,6 +28,7 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         pref = getSharedPreferences("user", Activity.MODE_PRIVATE);
+        User.getInstance().setPreferences(pref);
 
         moveMain(1);
     }
@@ -36,6 +47,31 @@ public class Splash extends AppCompatActivity {
 
                     finish();    //현재 액티비티 종료
                 } else {
+                    Log.d("test", "유저정보: "+pref.getString("AccessToken", ""));
+                    Call<UserResponse> call = RetrofitService.getTokenService().getUserInfo();
+                    call.enqueue(new Callback<UserResponse>() {
+                        //콜백 받는 부분
+                        @Override
+                        public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                            if (response.isSuccessful()) {
+                                Log.d("test", response.body().toString() + ", code: " + response.code());
+                            } else {
+                                try {
+                                    Log.d("test", "유저정보 불러오기"+response.errorBody().string() + ", code: " + response.code());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserResponse> call, Throwable t) {
+                            Log.d("test", "실패: " + t.getMessage());
+
+                            Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
                     startActivity(intent);    //intent 에 명시된 액티비티로 이동

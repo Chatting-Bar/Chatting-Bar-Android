@@ -18,16 +18,16 @@ public class SignInformation {
     }
 
     @SerializedName("message")
-    private String messeage;
+    private String message;
 
-    public String getMesseage() {
-        return messeage;
+    public String getMessage() {
+        return message;
     }
 
 
     @Override
     public String toString()
     {
-        return "accessToken: " + accessToken + "\n refreshToken: " + refreshToken + "\n" + messeage;
+        return "accessToken: " + accessToken + "\n refreshToken: " + refreshToken + "\n" + message;
     }
 }
