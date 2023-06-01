@@ -27,8 +27,7 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        pref = getSharedPreferences("user", Activity.MODE_PRIVATE);
-        User.getInstance().setPreferences(pref);
+        pref = User.getInstance(this).getPreferences(); //최초 화면에서 SharedPreferences생성
 
         moveMain(1);
     }
@@ -48,7 +47,7 @@ public class Splash extends AppCompatActivity {
                     finish();    //현재 액티비티 종료
                 } else {
                     Log.d("test", "유저정보: "+pref.getString("AccessToken", ""));
-                    Call<UserResponse> call = RetrofitService.getTokenService().getUserInfo();
+                    Call<UserResponse> call = RetrofitService.getApiService().getUserInfo();
                     call.enqueue(new Callback<UserResponse>() {
                         //콜백 받는 부분
                         @Override
