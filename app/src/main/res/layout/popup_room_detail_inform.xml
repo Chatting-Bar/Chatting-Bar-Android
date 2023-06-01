@@ -182,15 +182,16 @@
 
             </LinearLayout>
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="64dp"
                 android:layout_height="53dp"
                 android:layout_gravity="center"
-
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_subscribe" />
+                android:text="구독"
+                android:textStyle="bold"
+                android:background="@drawable/round_rect"
+                android:layout_weight="1" />
 
         </LinearLayout>
 

@@ -281,6 +281,7 @@
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/complete_click"
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:orientation="horizontal"

@@ -3,11 +3,13 @@ package com.osh.chatting_bar_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -21,6 +23,7 @@ import retrofit2.Response;
 public class SettingActivity extends AppCompatActivity {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+    private EditTagPopupDialog editTagPopupDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +32,30 @@ public class SettingActivity extends AppCompatActivity {
         pref = getSharedPreferences("user", Activity.MODE_PRIVATE);
         editor = pref.edit();
         InitBtn();
+        ActivitySendBack();
     }
 
+    protected void ActivitySendBack(){
+
+        //다이얼로그 밖의 화면은 흐리게 만들어줌
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+        layoutParams.dimAmount = 0.8f;
+        getWindow().setAttributes(layoutParams);
+
+    }
     protected void InitBtn() {
         {
+            Button edit_btn = findViewById(R.id.editTag_button);
+            Context context = this;
+            edit_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    editTagPopupDialog = new EditTagPopupDialog(context);
+                    editTagPopupDialog.show();
+
+                }
+            });
             //채팅 기록
             Button chatlist_btn = findViewById(R.id.chattingList_button);
             chatlist_btn.setOnClickListener(new View.OnClickListener() {
