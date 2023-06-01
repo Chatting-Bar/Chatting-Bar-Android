@@ -9,7 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -28,10 +31,19 @@ public class MainActivity extends AppCompatActivity {
         mainActivity = MainActivity.this;
 
         InitBtn();
-        InitRoomList(getNewestList(),findViewById(R.id.newest_recyclerView));
-        InitRoomList(getRecommendList(),findViewById(R.id.recommend_recyclerView));
-        InitRoomList(getSearchResultList(),findViewById(R.id.searchResult_recyclerView));
+        InitRoomList(getNewestList(), findViewById(R.id.newest_recyclerView));
+        InitRoomList(getRecommendList(), findViewById(R.id.recommend_recyclerView));
+        InitRoomList(getSearchResultList(), findViewById(R.id.searchResult_recyclerView));
+        InitRoomList(getSubscribeList(), findViewById(R.id.subscribe_recyclerView));
+        blindSearchResult();
 
+        Intent intent = getIntent();
+        if (intent.hasExtra("search")) {
+            String str = intent.getStringExtra("search");
+            TextView textView = findViewById(R.id.searchWord_text);
+            textView.setText("\""+str+"\"");
+            showSearchResult();
+        }
     }
 
     //검색결과 가리기
@@ -39,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout searchResultlayout = findViewById(R.id.search_result);
         searchResultlayout.setVisibility(View.GONE);//GONE = 공간까지 가림
                                                     //참고 : https://kdsoft-zeros.tistory.com/102
+    }
+    protected void showSearchResult(){
+        LinearLayout searchResultlayout = findViewById(R.id.search_result);
+        searchResultlayout.setVisibility(View.VISIBLE);
     }
 
     protected void InitRoomList(List<String> chatRoomList, RecyclerView recyclerView){
@@ -51,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void InitBtn()
     {
+
+
         Button searchcancel_btn = findViewById(R.id.searchCancel_button);
         searchcancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ChatLogActivity.class);
                 startActivity(intent);
-
                 finish();
             }
         });
@@ -110,6 +127,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // 채팅방 테스트 케이스
+        ImageButton alarm_btn = findViewById(R.id.alarm_button);
+        alarm_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private List<String> getNewestList() {
@@ -122,6 +149,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private List<String> getSearchResultList() {
         return Arrays.asList("검색어 테스트", "오시현3", "백계환3", "배종찬3", "신초은3");
+
+    }
+    private List<String> getSubscribeList() {
+        return Arrays.asList("구독자", "오시현3", "백계환3", "배종찬3", "신초은3");
 
     }
 }

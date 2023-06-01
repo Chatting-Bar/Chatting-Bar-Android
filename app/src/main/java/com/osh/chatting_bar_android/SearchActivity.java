@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -57,12 +58,19 @@ public class SearchActivity extends AppCompatActivity {
         search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateSearchList(editText.getText().toString());
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("search", editText.getText().toString());
-                startActivity(intent);
+                String str = editText.getText().toString();
 
-                finish();
+                if(str.length() == 0){
+                    Toast.makeText(getApplicationContext(),"검색어를 입력해주세요", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    updateSearchList(editText.getText().toString());
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("search", editText.getText().toString());
+                    startActivity(intent);
+
+                    finish();
+                }
             }
         });
 
