@@ -1,14 +1,13 @@
 package com.osh.chatting_bar_android;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -17,29 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.osh.chatting_bar_android.data_model.ChatRoomInfomation;
-import com.osh.chatting_bar_android.data_model.ChatRoomResponse;
-import com.osh.chatting_bar_android.data_model.SearchResponse;
-import com.osh.chatting_bar_android.data_model.UserResponse;
+import com.google.android.material.navigation.NavigationView;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import kotlin.coroutines.CoroutineContext;
-import kotlinx.coroutines.CoroutineScope;
-import kotlinx.coroutines.CoroutineStart;
-import kotlinx.coroutines.Dispatchers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class MainActivity extends AppCompatActivity {
     private ChatRoomRecyclerViewAdapter ChatRoomRecyclerViewAdapter;
-
+    private AlarmRecyclerViewAdapter AlarmRecyclerViewAdapter;
     public static Activity mainActivity;
-
-    private List<ChatRoomInfomation> latesetinfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,101 +33,18 @@ public class MainActivity extends AppCompatActivity {
         mainActivity = MainActivity.this;
 
         InitBtn();
-
+        InitRoomList(getNewestList(), findViewById(R.id.newest_recyclerView));
+        InitRoomList(getRecommendList(), findViewById(R.id.recommend_recyclerView));
+        InitRoomList(getSearchResultList(), findViewById(R.id.searchResult_recyclerView));
+        InitRoomList(getSubscribeList(), findViewById(R.id.subscribe_recyclerView));
         blindSearchResult();
-
-        //최신순 UI
-        Call<ChatRoomResponse> call = RetrofitService.getApiTokenService().getLatestRoom();
-        call.enqueue(new Callback<ChatRoomResponse>() {
-            //콜백 받는 부분
-            @Override
-            public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
-                if (response.isSuccessful()) {
-                    Log.d("test", "최신순\n"+response.body().toString() + ", code: " + response.code());
-                    latesetinfo = response.body().getInformation();
-                    InitRoomList(latesetinfo, findViewById(R.id.newest_recyclerView));
-
-//                    InitRoomList(latesetinfo, findViewById(R.id.subscribe_recyclerView));
-                } else {
-                    try {
-                        Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-
-            @Override
-            public void onFailure(Call<ChatRoomResponse> call, Throwable t) {
-                Log.d("test", "실패: " + t.getMessage());
-
-                Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
-            }
-        });
-        //추천순 UI
-        call = RetrofitService.getApiTokenService().getRecommendRoom();
-        call.enqueue(new Callback<ChatRoomResponse>() {
-            //콜백 받는 부분
-            @Override
-            public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
-                if (response.isSuccessful()) {
-                    Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
-                    latesetinfo = response.body().getInformation();
-                    InitRoomList(latesetinfo, findViewById(R.id.recommend_recyclerView));
-                } else {
-                    try {
-                        Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-
-            @Override
-            public void onFailure(Call<ChatRoomResponse> call, Throwable t) {
-                Log.d("test", "실패: " + t.getMessage());
-
-                Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         Intent intent = getIntent();
         if (intent.hasExtra("search")) {
             String str = intent.getStringExtra("search");
-            Call<SearchResponse> call2 = RetrofitService.getApiTokenService().getSearchRoom(str);
-            call2.enqueue(new Callback<SearchResponse>() {
-                //콜백 받는 부분
-                @Override
-                public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
-                    if (response.isSuccessful()) {
-                        Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
-                        latesetinfo = response.body().getInformation().getInformation();
-                        TextView textView = findViewById(R.id.searchWord_text);
-                        textView.setText("\""+str+"\"");
-                        showSearchResult();
-                        InitRoomList(latesetinfo, findViewById(R.id.searchResult_recyclerView));
-                    } else {
-                        try {
-                            Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-
-                @Override
-                public void onFailure(Call<SearchResponse> call, Throwable t) {
-                    Log.d("test", "실패: " + t.getMessage());
-
-                    Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
-                }
-            });
+            TextView textView = findViewById(R.id.searchWord_text);
+            textView.setText("\""+str+"\"");
+            showSearchResult();
         }
     }
 
@@ -157,14 +59,24 @@ public class MainActivity extends AppCompatActivity {
         searchResultlayout.setVisibility(View.VISIBLE);
     }
 
-    protected void InitRoomList(List<ChatRoomInfomation> chatRoomList, RecyclerView recyclerView){
+    protected void InitRoomList(List<String> chatRoomList, RecyclerView recyclerView){
         ChatRoomRecyclerViewAdapter = new ChatRoomRecyclerViewAdapter(this, chatRoomList);
         recyclerView.setAdapter(ChatRoomRecyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
+    }
+
+    protected void InitAlarmList(){
+        RecyclerView recyclerView = findViewById(R.id.alarm_recyclerView);
+
+        AlarmRecyclerViewAdapter = new AlarmRecyclerViewAdapter(this, getAlarmList());
+        recyclerView.setAdapter(AlarmRecyclerViewAdapter);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
+
     protected void InitBtn()
     {
 
@@ -229,12 +141,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // 채팅방 테스트 케이스
+//        ImageButton alarm_btn = findViewById(R.id.alarm_button);
+//        alarm_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+        //알림함 열기
         ImageButton alarm_btn = findViewById(R.id.alarm_button);
+        NavigationView navigationView = findViewById(R.id.alarmbox_drawerLayout);
+        navigationView.setVisibility(View.INVISIBLE);
+
         alarm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
-                startActivity(intent);
+                    InitAlarmList();
+                    navigationView.setVisibility(View.VISIBLE);
+            }
+        });
+        Button alarmExit_btn = findViewById(R.id.alarmExit_button);
+        alarmExit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigationView.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -253,6 +184,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private List<String> getSubscribeList() {
         return Arrays.asList("구독자", "오시현3", "백계환3", "배종찬3", "신초은3");
+
+    }
+    private List<String> getAlarmList() {
+        return Arrays.asList("배수호", "오시현", "백계환", "배종찬", "신초은");
 
     }
 }

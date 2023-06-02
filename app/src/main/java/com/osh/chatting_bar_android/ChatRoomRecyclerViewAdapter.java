@@ -29,6 +29,7 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
     @Override
     public ChatRoomRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ChatRoomRecyclerViewAdapter.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.chatroom_item, parent, false));
+
     }
 
 

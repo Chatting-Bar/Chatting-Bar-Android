@@ -2,19 +2,22 @@ package com.osh.chatting_bar_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.osh.chatting_bar_android.data_model.BaseResponse;
-import com.osh.chatting_bar_android.data_model.UserInformation;
-import com.osh.chatting_bar_android.data_model.UserResponse;
 
 import java.io.IOException;
 
@@ -25,51 +28,59 @@ import retrofit2.Response;
 public class SettingActivity extends AppCompatActivity {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+    private EditTagPopupDialog editTagPopupDialog;
+    private EditSubscriberPopupDialog editSubscriberPopupDialog;
 
-    UserInformation userInformation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-
-        Call<UserResponse> call = RetrofitService.getApiTokenService().getUserInfo();
-        call.enqueue(new Callback<UserResponse>() {
-            //콜백 받는 부분
-            @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                if (response.isSuccessful()) {
-                    Log.d("test", response.body().toString() + ", code: " + response.code());
-                    userInformation = response.body().getInformation();
-                    TextView Email_text = findViewById(R.id.email_text);
-                    Email_text.setText(userInformation.getEmail());
-
-                    TextView Nickname_text = findViewById(R.id.Nickname_text);
-                    Nickname_text.setText(userInformation.getNickname());
-                } else {
-                    try {
-                        Log.d("test", "유저정보 불러오기"+response.errorBody().string() + ", code: " + response.code());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {
-                Log.d("test", "실패: " + t.getMessage());
-
-                Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         pref = User.getInstance().getPreferences();
         editor = pref.edit();
         InitBtn();
+        ActivitySendBack();
     }
 
+    protected void ActivitySendBack(){
+
+        //다이얼로그 밖의 화면은 흐리게 만들어줌
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+        layoutParams.dimAmount = 0.8f;
+
+        getWindow().setAttributes(layoutParams);
+
+
+    }
     protected void InitBtn() {
         {
+            Context context = this;
+            //구독자 편집
+            Button editSubscriber_btn = findViewById(R.id.editsubscriber_button);
+            editSubscriber_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    editSubscriberPopupDialog = new EditSubscriberPopupDialog(context);
+                    editSubscriberPopupDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    editSubscriberPopupDialog.show();
+
+                }
+            });
+
+
+//            태그편집
+            Button edit_btn = findViewById(R.id.editTag_button);
+            edit_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    editTagPopupDialog = new EditTagPopupDialog(context);
+
+                    //아래 두 줄 라운드 외곽
+                    editTagPopupDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    editTagPopupDialog.show();
+
+                }
+            });
             //채팅 기록
             Button chatlist_btn = findViewById(R.id.chattingList_button);
             chatlist_btn.setOnClickListener(new View.OnClickListener() {
