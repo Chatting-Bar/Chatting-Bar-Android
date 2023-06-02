@@ -46,33 +46,26 @@ public interface RetrofitInterface {
 
     @FormUrlEncoded
     @POST("/api/chatroom/enter")
-    Call<BaseResponse> roomEnter(@Field("id") long id);
+    Call<BaseResponse> roomEnter(@Field("id") Long id);
 
-    @FormUrlEncoded
     @DELETE("/api/chatroom/{roomId}")
     Call<BaseResponse> roomExit(@Path("roomId") int roomId);
 
-    @FormUrlEncoded
     @DELETE("/api/chatroom?roomId=&userId=")
     Call<BaseResponse> roomKick(@Query("roomId") int roomId, @Query("userId") int userId);
 
-    @FormUrlEncoded
     @PATCH("/api/chatroom?roomId=&userId=")
     Call<BaseResponse> roomIce(@Query("roomId") int roomId, @Query("userId") int userId);
 
-    @FormUrlEncoded
     @GET("/api/chatroom")
     Call<ChatRoomResponse> getAllRoom();
 
-    @FormUrlEncoded
     @GET("/api/chatroom/latest")
     Call<ChatRoomResponse> getLatestRoom();
 
-    @FormUrlEncoded
     @GET("/api/chatroom/recommend")
     Call<ChatRoomResponse> getRecommendRoom();
 
-    @FormUrlEncoded
     @GET("/api/chatroom/{search}")
     Call<SearchResponse> getSearchRoom(@Path("search") int search);
 }

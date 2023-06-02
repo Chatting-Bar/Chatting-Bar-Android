@@ -1,5 +1,6 @@
 package com.osh.chatting_bar_android;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,14 +17,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.osh.chatting_bar_android.data_model.ChatRoomInfomation;
+import com.osh.chatting_bar_android.data_model.ChatRoomResponse;
+import com.osh.chatting_bar_android.data_model.UserResponse;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
+import kotlin.coroutines.CoroutineContext;
+import kotlinx.coroutines.CoroutineScope;
+import kotlinx.coroutines.CoroutineStart;
+import kotlinx.coroutines.Dispatchers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ChatRoomRecyclerViewAdapter ChatRoomRecyclerViewAdapter;
 
     public static Activity mainActivity;
+
+    private List<ChatRoomInfomation> latesetinfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +46,67 @@ public class MainActivity extends AppCompatActivity {
 
         mainActivity = MainActivity.this;
 
+        Call<ChatRoomResponse> call = RetrofitService.getApiTokenService().getLatestRoom();
+        call.enqueue(new Callback<ChatRoomResponse>() {
+            //콜백 받는 부분
+            @Override
+            public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
+                if (response.isSuccessful()) {
+                    Log.d("test", "최신순\n"+response.body().toString() + ", code: " + response.code());
+                    latesetinfo = response.body().getInformation();
+                    InitRoomList(latesetinfo, findViewById(R.id.newest_recyclerView));
+//                    InitRoomList(latesetinfo, findViewById(R.id.searchResult_recyclerView));
+//                    InitRoomList(latesetinfo, findViewById(R.id.subscribe_recyclerView));
+                } else {
+                    try {
+                        Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<ChatRoomResponse> call, Throwable t) {
+                Log.d("test", "실패: " + t.getMessage());
+
+                Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        call = RetrofitService.getApiTokenService().getRecommendRoom();
+        call.enqueue(new Callback<ChatRoomResponse>() {
+            //콜백 받는 부분
+            @Override
+            public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
+                if (response.isSuccessful()) {
+                    Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
+                    latesetinfo = response.body().getInformation();
+                    InitRoomList(latesetinfo, findViewById(R.id.recommend_recyclerView));
+                } else {
+                    try {
+                        Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<ChatRoomResponse> call, Throwable t) {
+                Log.d("test", "실패: " + t.getMessage());
+
+                Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         InitBtn();
-        InitRoomList(getNewestList(), findViewById(R.id.newest_recyclerView));
-        InitRoomList(getRecommendList(), findViewById(R.id.recommend_recyclerView));
-        InitRoomList(getSearchResultList(), findViewById(R.id.searchResult_recyclerView));
-        InitRoomList(getSubscribeList(), findViewById(R.id.subscribe_recyclerView));
+
         blindSearchResult();
 
         Intent intent = getIntent();
@@ -57,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         searchResultlayout.setVisibility(View.VISIBLE);
     }
 
-    protected void InitRoomList(List<String> chatRoomList, RecyclerView recyclerView){
+    protected void InitRoomList(List<ChatRoomInfomation> chatRoomList, RecyclerView recyclerView){
         ChatRoomRecyclerViewAdapter = new ChatRoomRecyclerViewAdapter(this, chatRoomList);
         recyclerView.setAdapter(ChatRoomRecyclerViewAdapter);
         recyclerView.setHasFixedSize(true);

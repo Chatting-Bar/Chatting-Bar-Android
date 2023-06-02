@@ -36,7 +36,7 @@ public class ChatRoomInfomation {
     @SerializedName("time")
     private String time;
 
-    public String time() {
+    public String getTime() {
         return time;
     }
 
