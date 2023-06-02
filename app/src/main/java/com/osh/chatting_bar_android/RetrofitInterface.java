@@ -16,24 +16,28 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetrofitInterface {
+    @Headers("Content-Type: application/json")
     @POST("/auth/sign-up")
     Call<BaseResponse> sign_up(@Body SignUpRequest signUpRequest);
 
+    @Headers("Content-Type: application/json")
     @POST("/auth/sign-in")
     Call<SignInResponse> sign_in(@Body SignInRequest signInRequest);
 
 //    @FormUrlEncoded
+//    @Headers("Content-Type: application/json")
 //    @POST("/auth/sign-out")
-//    Call<BaseResponse> sign_out(@Field("refreshToken") string token);
+//    Call<BaseResponse> sign_out(@Field("refreshToken") String token);
     @POST("/auth/sign-out")
     Call<BaseResponse> sign_out(@Body stringRequest refreshToken);
 
     @POST("/api/chatroom")
     Call<BaseResponse> createRoom(@Body ChatRoomRequest chatRoomRequest);
 
-    //    @FormUrlEncoded
+//    @FormUrlEncoded
+//    @Headers("Content-Type: application/json")
 //    @POST("/auth/refresh")
-//    Call<BaseResponse> refresh(@Field("refreshToken") string token);
+//    Call<SignInResponse> refresh(@Field("refreshToken") String token);
     @POST("/auth/refresh")
     Call<SignInResponse> refresh(@Body stringRequest refreshToken);
 

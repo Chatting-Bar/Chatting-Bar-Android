@@ -2,7 +2,6 @@ package com.osh.chatting_bar_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.osh.chatting_bar_android.data_model.BaseResponse;
 import com.osh.chatting_bar_android.data_model.UserResponse;
 
 import java.io.IOException;
@@ -47,7 +45,7 @@ public class Splash extends AppCompatActivity {
                     finish();    //현재 액티비티 종료
                 } else {
                     Log.d("test", "유저정보: "+pref.getString("AccessToken", ""));
-                    Call<UserResponse> call = RetrofitService.getApiService().getUserInfo();
+                    Call<UserResponse> call = RetrofitService.getApiTokenService().getUserInfo();
                     call.enqueue(new Callback<UserResponse>() {
                         //콜백 받는 부분
                         @Override

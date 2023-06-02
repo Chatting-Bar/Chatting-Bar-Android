@@ -1,6 +1,5 @@
 package com.osh.chatting_bar_android;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.osh.chatting_bar_android.data_model.BaseResponse;
 import com.osh.chatting_bar_android.data_model.Categories;
 import com.osh.chatting_bar_android.data_model.ChatRoomRequest;
-import com.osh.chatting_bar_android.data_model.SignUpRequest;
 
 import java.io.IOException;
 import java.util.Date;
@@ -59,7 +57,7 @@ public class CreateRoomActivity extends AppCompatActivity {
                 tempSet.add(Categories.SPORT);
                 ChatRoomRequest chatRoomRequest = new ChatRoomRequest("채팅방1", "채팅방1 설명", tempSet,
                         new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), 5, false, "");
-                Call<BaseResponse> call = RetrofitService.getApiService().createRoom(chatRoomRequest);
+                Call<BaseResponse> call = RetrofitService.getApiTokenService().createRoom(chatRoomRequest);
                 call.enqueue(new Callback<BaseResponse>(){
                     //콜백 받는 부분
                     @Override
