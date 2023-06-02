@@ -5,6 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/alarmbox_drawerLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/alarmExit_button"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="x"
+            android:textSize="20dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/HeaderColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="알림함"
+                android:textSize="20dp"
+                android:textColor="@color/HeaderColor"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/light_gray" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/alarm_recyclerView">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
