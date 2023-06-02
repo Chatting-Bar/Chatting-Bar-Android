@@ -15,9 +15,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.osh.chatting_bar_android.data_model.BaseResponse;
+import com.osh.chatting_bar_android.data_model.UserInformation;
+import com.osh.chatting_bar_android.data_model.UserResponse;
 
 import java.io.IOException;
 
@@ -30,11 +33,43 @@ public class SettingActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     private EditTagPopupDialog editTagPopupDialog;
     private EditSubscriberPopupDialog editSubscriberPopupDialog;
-
+    UserInformation userInformation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
+        Call<UserResponse> call = RetrofitService.getApiTokenService().getUserInfo();
+        call.enqueue(new Callback<UserResponse>() {
+            //콜백 받는 부분
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if (response.isSuccessful()) {
+                    Log.d("test", response.body().toString() + ", code: " + response.code());
+                    userInformation = response.body().getInformation();
+                    TextView Email_text = findViewById(R.id.email_text);
+                    Email_text.setText(userInformation.getEmail());
+
+                    TextView Nickname_text = findViewById(R.id.Nickname_text);
+                    Nickname_text.setText(userInformation.getNickname());
+                } else {
+                    try {
+                        Log.d("test", "유저정보 불러오기"+response.errorBody().string() + ", code: " + response.code());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Log.d("test", "실패: " + t.getMessage());
+
+                Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         pref = User.getInstance().getPreferences();
         editor = pref.edit();
         InitBtn();
