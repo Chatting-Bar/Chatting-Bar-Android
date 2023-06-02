@@ -1,6 +1,7 @@
 package com.osh.chatting_bar_android;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,13 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ChatRoomRecyclerViewAdapter ChatRoomRecyclerViewAdapter;
-
+    private AlarmRecyclerViewAdapter AlarmRecyclerViewAdapter;
     public static Activity mainActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +65,18 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
+    }
+
+    protected void InitAlarmList(){
+        RecyclerView recyclerView = findViewById(R.id.alarm_recyclerView);
+
+        AlarmRecyclerViewAdapter = new AlarmRecyclerViewAdapter(this, getAlarmList());
+        recyclerView.setAdapter(AlarmRecyclerViewAdapter);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
+
     protected void InitBtn()
     {
 
@@ -129,12 +141,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // 채팅방 테스트 케이스
+//        ImageButton alarm_btn = findViewById(R.id.alarm_button);
+//        alarm_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+        //알림함 열기
         ImageButton alarm_btn = findViewById(R.id.alarm_button);
+        NavigationView navigationView = findViewById(R.id.alarmbox_drawerLayout);
+        navigationView.setVisibility(View.INVISIBLE);
+
         alarm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
-                startActivity(intent);
+                    InitAlarmList();
+                    navigationView.setVisibility(View.VISIBLE);
+            }
+        });
+        Button alarmExit_btn = findViewById(R.id.alarmExit_button);
+        alarmExit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigationView.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -153,6 +184,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private List<String> getSubscribeList() {
         return Arrays.asList("구독자", "오시현3", "백계환3", "배종찬3", "신초은3");
+
+    }
+    private List<String> getAlarmList() {
+        return Arrays.asList("배수호", "오시현", "백계환", "배종찬", "신초은");
 
     }
 }
