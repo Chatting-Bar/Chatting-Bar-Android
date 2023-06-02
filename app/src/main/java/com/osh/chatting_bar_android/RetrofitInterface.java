@@ -67,7 +67,7 @@ public interface RetrofitInterface {
     Call<ChatRoomResponse> getRecommendRoom();
 
     @GET("/api/chatroom/{search}")
-    Call<SearchResponse> getSearchRoom(@Path("search") int search);
+    Call<SearchResponse> getSearchRoom(@Path("search") String search);
 }
 
 //왜인지 @Field 안돌아가서 다 @Body로 하기위함....string은 사소해서 여기에 클래스 선언함

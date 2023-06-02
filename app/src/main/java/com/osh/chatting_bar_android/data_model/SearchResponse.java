@@ -7,13 +7,13 @@ public class SearchResponse {
     private boolean check;
 
     @SerializedName("information")
-    private Information information;
+    private SearchInfomation information;
 
     public boolean getCheck() {
         return check;
     }
 
-    public Information getInformation() {
+    public SearchInfomation getInformation() {
         return information;
     }
 

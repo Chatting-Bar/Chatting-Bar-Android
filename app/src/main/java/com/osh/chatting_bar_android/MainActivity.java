@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.osh.chatting_bar_android.data_model.ChatRoomInfomation;
 import com.osh.chatting_bar_android.data_model.ChatRoomResponse;
+import com.osh.chatting_bar_android.data_model.SearchResponse;
 import com.osh.chatting_bar_android.data_model.UserResponse;
 
 import java.io.IOException;
@@ -46,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
 
         mainActivity = MainActivity.this;
 
+        InitBtn();
+
+        blindSearchResult();
+
+        //최신순 UI
         Call<ChatRoomResponse> call = RetrofitService.getApiTokenService().getLatestRoom();
         call.enqueue(new Callback<ChatRoomResponse>() {
             //콜백 받는 부분
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("test", "최신순\n"+response.body().toString() + ", code: " + response.code());
                     latesetinfo = response.body().getInformation();
                     InitRoomList(latesetinfo, findViewById(R.id.newest_recyclerView));
-//                    InitRoomList(latesetinfo, findViewById(R.id.searchResult_recyclerView));
+
 //                    InitRoomList(latesetinfo, findViewById(R.id.subscribe_recyclerView));
                 } else {
                     try {
@@ -75,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
             }
         });
-
+        //추천순 UI
         call = RetrofitService.getApiTokenService().getRecommendRoom();
         call.enqueue(new Callback<ChatRoomResponse>() {
             //콜백 받는 부분
@@ -104,17 +110,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        InitBtn();
-
-        blindSearchResult();
-
         Intent intent = getIntent();
         if (intent.hasExtra("search")) {
             String str = intent.getStringExtra("search");
-            TextView textView = findViewById(R.id.searchWord_text);
-            textView.setText("\""+str+"\"");
-            showSearchResult();
+            Call<SearchResponse> call2 = RetrofitService.getApiTokenService().getSearchRoom(str);
+            call2.enqueue(new Callback<SearchResponse>() {
+                //콜백 받는 부분
+                @Override
+                public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                    if (response.isSuccessful()) {
+                        Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
+                        latesetinfo = response.body().getInformation().getInformation();
+                        TextView textView = findViewById(R.id.searchWord_text);
+                        textView.setText("\""+str+"\"");
+                        showSearchResult();
+                        InitRoomList(latesetinfo, findViewById(R.id.searchResult_recyclerView));
+                    } else {
+                        try {
+                            Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+
+                @Override
+                public void onFailure(Call<SearchResponse> call, Throwable t) {
+                    Log.d("test", "실패: " + t.getMessage());
+
+                    Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 

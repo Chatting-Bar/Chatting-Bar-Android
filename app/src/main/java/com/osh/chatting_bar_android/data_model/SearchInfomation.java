@@ -2,6 +2,8 @@ package com.osh.chatting_bar_android.data_model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class SearchInfomation {
     @SerializedName("searchWord")
     private String searchWord;
@@ -10,10 +12,10 @@ public class SearchInfomation {
         return searchWord;
     }
 
-    @SerializedName("information")
-    private ChatRoomInfomation information;
+    @SerializedName("data")
+    private List<ChatRoomInfomation> information;
 
-    public ChatRoomInfomation getInformation() {
+    public List<ChatRoomInfomation> getInformation() {
         return information;
     }
 
