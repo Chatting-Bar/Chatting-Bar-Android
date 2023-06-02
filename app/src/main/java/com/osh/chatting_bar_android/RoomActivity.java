@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -54,6 +57,17 @@ public class RoomActivity extends AppCompatActivity {
         TextView RoomTitle = findViewById(R.id.room_name);
         RoomTitle.setText("test");
 
+        ImageButton alarm_btn = findViewById(R.id.alarm_button);
+        NavigationView navigationView = findViewById(R.id.roomMenu_drawerLayout);
+        navigationView.setVisibility(View.INVISIBLE);
+
+        alarm_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                InitMemberList();
+                navigationView.setVisibility(View.VISIBLE);
+            }
+        });
 
         //전송버튼
         Button send_button = findViewById(R.id.send_button);
