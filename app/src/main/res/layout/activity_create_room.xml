@@ -286,7 +286,7 @@
             <TextView
                 android:id="@+id/tagSet_rect"
                 android:layout_width="348dp"
-                android:layout_height="98dp"
+                android:layout_height="88dp"
                 android:background="@drawable/round_rect"
                 android:ems="10"
 
@@ -306,26 +306,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/tagSet_rect"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.089"
+                app:layout_constraintHorizontal_bias="0.087"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <Button
-                android:id="@+id/addTag_button"
-                android:layout_width="63dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="1dp"
-                android:layout_marginEnd="285dp"
-                android:background="@drawable/round_rect_fill"
-                android:text="+"
-
-                app:layout_constraintBottom_toBottomOf="@+id/tagSet_rect"
-                app:layout_constraintEnd_toEndOf="@+id/tagSet_rect"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/tagSet_rect"
-                app:layout_constraintTop_toTopOf="@+id/tagSet_rect"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.269" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

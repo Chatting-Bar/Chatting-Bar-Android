@@ -1,8 +1,7 @@
 package com.osh.chatting_bar_android;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,28 +13,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class SubscriberRecyclerViewAdapter extends RecyclerView.Adapter<SubscriberRecyclerViewAdapter.MyViewHolder>{
-    private List<String> subscriberList;
+public class EditTagRecyclerViewAdapter extends RecyclerView.Adapter<EditTagRecyclerViewAdapter.MyViewHolder>{
+    private List<String> tagList;
     private Context context;
-    public SubscriberRecyclerViewAdapter(Context context, List<String> subscriberList) {
+    public EditTagRecyclerViewAdapter(Context context, List<String> tagList) {
 
-        this.subscriberList = subscriberList;
+        this.tagList = tagList;
         this.context = context;
     }
     @NonNull
     @Override
-    public SubscriberRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.my_subscriber_item, parent, false));
+    public EditTagRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.tag_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SubscriberRecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.textView.setText(subscriberList.get(position));
+    public void onBindViewHolder(@NonNull EditTagRecyclerViewAdapter.MyViewHolder holder, int position) {
+        holder.textView.setText("#"+ tagList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return subscriberList.size();
+        return tagList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -43,7 +42,18 @@ public class SubscriberRecyclerViewAdapter extends RecyclerView.Adapter<Subscrib
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.subscriber_nickname_text);
+            textView = itemView.findViewById(R.id.tag_name_text);
+            LinearLayout tagBtn = itemView.findViewById(R.id.tag_select_btn);
+
+            tagBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+//                    if (textView.getBackground().equals(R.drawable.round_rect_no_select_tag)) {
+                        textView.setBackgroundResource(R.drawable.round_rect_select_tag);
+//                    }
+                }
+            });
 //            아이템 클릭 이벤트 처리
 //            LinearLayout recentBtn = itemView.findViewById(R.id.recent_button);
 //            recentBtn.setOnClickListener(new View.OnClickListener() {

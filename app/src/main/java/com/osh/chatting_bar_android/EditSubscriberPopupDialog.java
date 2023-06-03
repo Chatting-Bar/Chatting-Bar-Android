@@ -24,7 +24,7 @@ public class EditSubscriberPopupDialog extends Dialog {
         super(context);
         this.context = context;
         setContentView(R.layout.popup_edit_subscirber);
-        InitSbuscriberList();
+        InitSubscriberList();
         shutdownClick = findViewById(R.id.close_button);
         shutdownClick.setOnClickListener(new View.OnClickListener() {
 
@@ -41,7 +41,7 @@ public class EditSubscriberPopupDialog extends Dialog {
             }
         });
     }
-    protected void InitSbuscriberList(){
+    protected void InitSubscriberList(){
         RecyclerView recyclerView = findViewById(R.id.subscriber_recyclerView);
         SubscriberRecyclerViewAdapter = new SubscriberRecyclerViewAdapter(context, getSubscriberList());
         recyclerView.setAdapter(SubscriberRecyclerViewAdapter);
