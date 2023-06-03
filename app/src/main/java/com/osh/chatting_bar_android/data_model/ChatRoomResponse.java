@@ -9,13 +9,13 @@ public class ChatRoomResponse {
     private boolean check;
 
     @SerializedName("information")
-    private List<ChatRoomInfomation> information;
+    private List<ChatRoomInformation> information;
 
     public boolean getCheck() {
         return check;
     }
 
-    public List<ChatRoomInfomation> getInformation() {
+    public List<ChatRoomInformation> getInformation() {
         return information;
     }
 

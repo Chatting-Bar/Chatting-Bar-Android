@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -18,7 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.osh.chatting_bar_android.data_model.ChatRoomInfomation;
+import com.osh.chatting_bar_android.data_model.ChatRoomInformation;
 import com.osh.chatting_bar_android.data_model.ChatRoomResponse;
 import com.osh.chatting_bar_android.data_model.SearchResponse;
 
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private AlarmRecyclerViewAdapter AlarmRecyclerViewAdapter;
     public static Activity mainActivity;
 
-    private List<ChatRoomInfomation> latestInfo;
+    private List<ChatRoomInformation> latestInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         searchResultlayout.setVisibility(View.VISIBLE);
     }
 
-    protected void InitRoomList(List<ChatRoomInfomation> chatRoomList, RecyclerView recyclerView){
+    protected void InitRoomList(List<ChatRoomInformation> chatRoomList, RecyclerView recyclerView){
         ChatRoomRecyclerViewAdapter = new ChatRoomRecyclerViewAdapter(this, chatRoomList);
         recyclerView.setAdapter(ChatRoomRecyclerViewAdapter);
         recyclerView.setHasFixedSize(true);

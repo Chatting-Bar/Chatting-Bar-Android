@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Set;
 
-public class ChatRoomInfomation {
+public class ChatRoomInformation {
     @SerializedName("id")
     private Long id;
 

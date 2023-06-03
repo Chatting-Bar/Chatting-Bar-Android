@@ -57,7 +57,7 @@ public class RoomActivity extends AppCompatActivity {
         TextView RoomTitle = findViewById(R.id.room_name);
         RoomTitle.setText("test");
 
-        ImageButton alarm_btn = findViewById(R.id.alarm_button);
+        Button alarm_btn = findViewById(R.id.menu_button);
         NavigationView navigationView = findViewById(R.id.roomMenu_drawerLayout);
         navigationView.setVisibility(View.INVISIBLE);
 
