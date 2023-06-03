@@ -73,6 +73,6 @@ public class ChatRoomInfomation {
     public String toString()
     {
         return "id: " + id + "\nname: " + name + "\nhostName: " + hostName + "\nparticipant" + participant + "\ntime" + time + "\ncategories" + categories+"\npassword" + password
-                + "\nprivate: " + private_ + "\n full: " + full;
+                + "\nprivate: " + private_ + "\n full: " + full + "\n------------------------------------------";
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,8 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
         }
 //        2023-06-03T15:00 ~ 2023-06-03T18:00
         holder.time.setText(time);
+        if (!hostList.get(position).getPrivate_())
+            holder.private_.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -64,12 +67,15 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
         TextView participant_num;
         TextView time;
 
+        ImageView private_;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             host = itemView.findViewById(R.id.hostNickname_text);
             desc = itemView.findViewById(R.id.title_text);
             participant_num = itemView.findViewById(R.id.title_text2);
             time = itemView.findViewById(R.id.operating_time);
+            private_ = itemView.findViewById(R.id.imageView2);
         }
     }
 }
