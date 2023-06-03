@@ -1,7 +1,6 @@
 package com.osh.chatting_bar_android;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private AlarmRecyclerViewAdapter AlarmRecyclerViewAdapter;
     public static Activity mainActivity;
 
-    private List<ChatRoomInfomation> latesetinfo;
+    private List<ChatRoomInfomation> latestInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
                 if (response.isSuccessful()) {
                     Log.d("test", "최신순\n"+response.body().toString() + ", code: " + response.code());
-                    latesetinfo = response.body().getInformation();
-                    InitRoomList(latesetinfo, findViewById(R.id.newest_recyclerView));
+                    latestInfo = response.body().getInformation();
+                    InitRoomList(latestInfo, findViewById(R.id.newest_recyclerView));
 
 //                    InitRoomList(latesetinfo, findViewById(R.id.subscribe_recyclerView));
                 } else {
@@ -85,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
                 if (response.isSuccessful()) {
                     Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
-                    latesetinfo = response.body().getInformation();
-                    InitRoomList(latesetinfo, findViewById(R.id.recommend_recyclerView));
+                    latestInfo = response.body().getInformation();
+                    InitRoomList(latestInfo, findViewById(R.id.recommend_recyclerView));
                 } else {
                     try {
                         Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
@@ -116,11 +115,11 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
                     if (response.isSuccessful()) {
                         Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
-                        latesetinfo = response.body().getInformation().getInformation();
+                        latestInfo = response.body().getInformation().getInformation();
                         TextView textView = findViewById(R.id.searchWord_text);
                         textView.setText("\""+str+"\"");
                         showSearchResult();
-                        InitRoomList(latesetinfo, findViewById(R.id.searchResult_recyclerView));
+                        InitRoomList(latestInfo, findViewById(R.id.searchResult_recyclerView));
                     } else {
                         try {
                             Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
