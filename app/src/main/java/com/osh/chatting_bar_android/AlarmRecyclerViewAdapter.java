@@ -40,7 +40,7 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmRecycler
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.subscirber_nickname_text);
+            textView = itemView.findViewById(R.id.AlarmHost_nickname_text);
 //            아이템 클릭 이벤트 처리
 //            LinearLayout recentBtn = itemView.findViewById(R.id.recent_button);
 //            recentBtn.setOnClickListener(new View.OnClickListener() {

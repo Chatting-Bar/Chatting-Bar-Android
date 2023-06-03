@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -262,7 +263,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    
+
+
     private List<String> getAlarmList() {
         return Arrays.asList("배수호", "오시현", "백계환", "배종찬", "신초은");
 

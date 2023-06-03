@@ -1,9 +1,12 @@
 package com.osh.chatting_bar_android;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +26,7 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
 
     private List<ChatRoomInfomation> hostList;
     private Context context;
+    private RoomDetailInfoPopupDialog RoomDetailInfoPopupDialog;
     public ChatRoomRecyclerViewAdapter(Context context, List<ChatRoomInfomation>  hostList) {
 
         this.hostList = hostList;
@@ -34,7 +38,6 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
         return new ChatRoomRecyclerViewAdapter.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.chatroom_item, parent, false));
 
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ChatRoomRecyclerViewAdapter.MyViewHolder holder, int position) {
@@ -62,8 +65,13 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
             @Override
             public void onClick(View v) {
                 //v.getContext()는 이 아이템의 context임.
-                Toast.makeText(v.getContext(), "클릭 이벤트 입니다. 누른 방은 " + hostList.get(index).getId(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(v.getContext(), "클릭 이벤트 입니다. 누른 방은 " + hostList.get(index).getId(), Toast.LENGTH_SHORT).show();
                 //여기에 팝업
+                RoomDetailInfoPopupDialog = new RoomDetailInfoPopupDialog(context);
+
+                //아래 두 줄 라운드 외곽
+                RoomDetailInfoPopupDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                RoomDetailInfoPopupDialog.show();
             }
         });
     }
