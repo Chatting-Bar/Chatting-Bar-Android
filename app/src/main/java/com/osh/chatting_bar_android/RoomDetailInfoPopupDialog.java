@@ -59,14 +59,15 @@ public class RoomDetailInfoPopupDialog extends Dialog {
                     public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                         if (response.isSuccessful()) {
                             Log.d("test", response.body().toString() + ", code: " + response.code());
+                            Intent intent = new Intent(v.getContext(), RoomActivity.class);
+                            intent.putExtra("RoomID", information.getId());
+                            v.getContext().startActivity(intent);
+
+                            dismiss();
                         } else {
                             try {
                                 Log.d("test", "방입장"+response.errorBody().string() + ", code: " + response.code());
-                                Intent intent = new Intent(v.getContext(), RoomActivity.class);
-                                intent.putExtra("RoomID", information.getId());
-                                v.getContext().startActivity(intent);
 
-                                dismiss();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

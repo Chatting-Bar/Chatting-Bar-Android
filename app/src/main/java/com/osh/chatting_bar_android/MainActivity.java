@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
                 if (response.isSuccessful()) {
-                    Log.d("test", "최신순\n"+response.body().toString() + ", code: " + response.code());
+//                    Log.d("test", "최신순\n"+response.body().toString() + ", code: " + response.code());
                     latestInfo = response.body().getInformation();
                     InitRoomList(latestInfo, findViewById(R.id.newest_recyclerView));
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
                 if (response.isSuccessful()) {
-                    Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
+//                    Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
                     latestInfo = response.body().getInformation();
                     InitRoomList(latestInfo, findViewById(R.id.recommend_recyclerView));
                 } else {
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
                     if (response.isSuccessful()) {
-                        Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
+//                        Log.d("test", "검색\n"+response.body().toString() + ", code: " + response.code());
                         latestInfo = response.body().getInformation().getInformation();
                         TextView textView = findViewById(R.id.searchWord_text);
                         textView.setText("\""+str+"\"");
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                         InitRoomList(latestInfo, findViewById(R.id.searchResult_recyclerView));
                     } else {
                         try {
-                            Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
+                            Log.d("test", "검색"+response.errorBody().string() + ", code: " + response.code());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
