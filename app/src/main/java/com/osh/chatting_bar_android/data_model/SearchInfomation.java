@@ -13,9 +13,9 @@ public class SearchInfomation {
     }
 
     @SerializedName("data")
-    private List<ChatRoomInfomation> information;
+    private List<ChatRoomInformation> information;
 
-    public List<ChatRoomInfomation> getInformation() {
+    public List<ChatRoomInformation> getInformation() {
         return information;
     }
 
