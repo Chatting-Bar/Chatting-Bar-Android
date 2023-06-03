@@ -47,10 +47,32 @@ public class ChatRoomInfomation {
         return categories;
     }
 
+    @SerializedName("password")
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    @SerializedName("private")
+    private Boolean private_;
+
+    public Boolean getPrivate_() {
+        return private_;
+    }
+
+    @SerializedName("full")
+    private Boolean full;
+
+    public Boolean getFull() {
+        return full;
+    }
+
 
     @Override
     public String toString()
     {
-        return "id: " + id + "\nname: " + name + "\nhostName: " + hostName + "\nparticipant" + participant + "\ntime" + time + "\ncategories" + categories;
+        return "id: " + id + "\nname: " + name + "\nhostName: " + hostName + "\nparticipant" + participant + "\ntime" + time + "\ncategories" + categories+"\npassword" + password
+                + "\nprivate: " + private_ + "\n full: " + full;
     }
 }
