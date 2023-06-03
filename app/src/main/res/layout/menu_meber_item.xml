@@ -11,8 +11,7 @@
             android:src="@drawable/ic_profileimg"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:marginRight="8dp" />
+            android:layout_marginTop="5dp"/>
 
         <TextView
             android:id="@+id/ChatLogHost_nickname_text"
@@ -21,7 +20,6 @@
 
             android:layout_gravity="center"
             android:paddingLeft="20dp"
-            android:marginTop="15dp"
             android:text="유저"
             android:textColor="@color/black"
             android:textSize="15dp"

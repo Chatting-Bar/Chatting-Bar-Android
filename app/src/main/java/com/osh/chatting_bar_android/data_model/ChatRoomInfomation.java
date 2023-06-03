@@ -19,6 +19,13 @@ public class ChatRoomInfomation {
         return name;
     }
 
+    @SerializedName("desc")
+    private String desc;
+
+    public String getDesc() {
+        return desc;
+    }
+
     @SerializedName("hostName")
     private String hostName;
 
@@ -72,7 +79,7 @@ public class ChatRoomInfomation {
     @Override
     public String toString()
     {
-        return "id: " + id + "\nname: " + name + "\nhostName: " + hostName + "\nparticipant" + participant + "\ntime" + time + "\ncategories" + categories+"\npassword" + password
+        return "id: " + id + "\nname: " + name + "\ndesc: " + desc+ "\nhostName: " + hostName + "\nparticipant" + participant + "\ntime" + time + "\ncategories" + categories+"\npassword" + password
                 + "\nprivate: " + private_ + "\n full: " + full + "\n------------------------------------------";
     }
 }
