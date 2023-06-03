@@ -4,18 +4,18 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ChatRoomResponse {
+public class OneCharRoomResponse {
     @SerializedName("check")
     private boolean check;
 
     @SerializedName("information")
-    private List<ChatRoomInformation> information;
+    private ChatRoomInformation information;
 
     public boolean getCheck() {
         return check;
     }
 
-    public List<ChatRoomInformation> getInformation() {
+    public ChatRoomInformation getInformation() {
         return information;
     }
 

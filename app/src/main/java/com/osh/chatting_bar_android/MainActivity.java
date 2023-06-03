@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -18,7 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.osh.chatting_bar_android.data_model.ChatRoomInfomation;
+import com.osh.chatting_bar_android.data_model.ChatRoomInformation;
 import com.osh.chatting_bar_android.data_model.ChatRoomResponse;
 import com.osh.chatting_bar_android.data_model.SearchResponse;
 
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private AlarmRecyclerViewAdapter AlarmRecyclerViewAdapter;
     public static Activity mainActivity;
 
-    private List<ChatRoomInfomation> latestInfo;
+    private List<ChatRoomInformation> latestInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
                 if (response.isSuccessful()) {
-                    Log.d("test", "최신순\n"+response.body().toString() + ", code: " + response.code());
+//                    Log.d("test", "최신순\n"+response.body().toString() + ", code: " + response.code());
                     latestInfo = response.body().getInformation();
                     InitRoomList(latestInfo, findViewById(R.id.newest_recyclerView));
 
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
                 if (response.isSuccessful()) {
-                    Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
+//                    Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
                     latestInfo = response.body().getInformation();
                     InitRoomList(latestInfo, findViewById(R.id.recommend_recyclerView));
                 } else {
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
                     if (response.isSuccessful()) {
-                        Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
+//                        Log.d("test", "검색\n"+response.body().toString() + ", code: " + response.code());
                         latestInfo = response.body().getInformation().getInformation();
                         TextView textView = findViewById(R.id.searchWord_text);
                         textView.setText("\""+str+"\"");
@@ -123,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                         InitRoomList(latestInfo, findViewById(R.id.searchResult_recyclerView));
                     } else {
                         try {
-                            Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
+                            Log.d("test", "검색"+response.errorBody().string() + ", code: " + response.code());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -153,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         searchResultlayout.setVisibility(View.VISIBLE);
     }
 
-    protected void InitRoomList(List<ChatRoomInfomation> chatRoomList, RecyclerView recyclerView){
+    protected void InitRoomList(List<ChatRoomInformation> chatRoomList, RecyclerView recyclerView){
         ChatRoomRecyclerViewAdapter = new ChatRoomRecyclerViewAdapter(this, chatRoomList);
         recyclerView.setAdapter(ChatRoomRecyclerViewAdapter);
         recyclerView.setHasFixedSize(true);

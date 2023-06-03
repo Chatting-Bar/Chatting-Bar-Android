@@ -37,25 +37,27 @@ public interface RetrofitInterface {
 //    @FormUrlEncoded
 //    @Headers("Content-Type: application/json")
 //    @POST("/auth/refresh")
-//    Call<SignInResponse> refresh(@Field("refreshToken") String token);
+//    Call<SignInResponse> refresh(@Field("refreshToken") String token); //->@Field가 안돌아가유...
     @POST("/auth/refresh")
     Call<SignInResponse> refresh(@Body stringRequest refreshToken);
 
     @GET("/api/users")
     Call<UserResponse> getUserInfo();
 
-    @FormUrlEncoded
     @POST("/api/chatroom/enter")
-    Call<BaseResponse> roomEnter(@Field("id") Long id);
+    Call<BaseResponse> roomEnter(@Body LongRequest id);
+
+    @GET("/api/chatroom/{roomId}")
+    Call<OneCharRoomResponse> getRoomInfo(@Path("roomId") Long roomId);
 
     @DELETE("/api/chatroom/{roomId}")
-    Call<BaseResponse> roomExit(@Path("roomId") int roomId);
+    Call<BaseResponse> roomExit(@Path("roomId") Long roomId);
 
     @DELETE("/api/chatroom?roomId=&userId=")
-    Call<BaseResponse> roomKick(@Query("roomId") int roomId, @Query("userId") int userId);
+    Call<BaseResponse> roomKick(@Query("roomId") Long roomId, @Query("userId") int userId);
 
     @PATCH("/api/chatroom?roomId=&userId=")
-    Call<BaseResponse> roomIce(@Query("roomId") int roomId, @Query("userId") int userId);
+    Call<BaseResponse> roomIce(@Query("roomId") Long roomId, @Query("userId") int userId);
 
     @GET("/api/chatroom")
     Call<ChatRoomResponse> getAllRoom();
@@ -76,5 +78,14 @@ class stringRequest {
 
     public stringRequest(String refreshToken) {
         this.refreshToken = refreshToken;
+    }
+}
+
+//왜인지 @Field 안돌아가서 다 @Body로 하기위함....string은 사소해서 여기에 클래스 선언함
+class LongRequest {
+    private Long id;
+
+    public LongRequest(Long id) {
+        this.id = id;
     }
 }

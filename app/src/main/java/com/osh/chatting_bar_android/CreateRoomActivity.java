@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -19,6 +22,8 @@ import com.osh.chatting_bar_android.data_model.Categories;
 import com.osh.chatting_bar_android.data_model.ChatRoomRequest;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -31,6 +36,8 @@ import retrofit2.Response;
 
 public class CreateRoomActivity extends AppCompatActivity {
     SharedPreferences pref;
+    private String startTime;
+    private String durationtime;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_room);
@@ -56,6 +63,7 @@ public class CreateRoomActivity extends AppCompatActivity {
                             calenderInstance.set(Calendar.HOUR_OF_DAY, hourOfDay);
                             calenderInstance.set(Calendar.MINUTE, minute);
                             start_time.setText(hourOfDay + " : "+ minute);
+                            startTime = hourOfDay + ":" + minute;
                         }
                     }
                 };
@@ -84,6 +92,7 @@ public class CreateRoomActivity extends AppCompatActivity {
                             calenderInstance.set(Calendar.HOUR_OF_DAY, hourOfDay);
                             calenderInstance.set(Calendar.MINUTE, minute);
                             operating_time.setText(hourOfDay + " : "+ minute);
+                            durationtime = hourOfDay + ":" + minute;
                         }
                     }
                 };
@@ -130,8 +139,21 @@ public class CreateRoomActivity extends AppCompatActivity {
                 tempSet.add(Categories.DANCE);
                 tempSet.add(Categories.GAME);
                 tempSet.add(Categories.SPORT);
-                ChatRoomRequest chatRoomRequest = new ChatRoomRequest("채팅방1", "채팅방1 설명", tempSet,
-                        new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), 5, false, "");
+                EditText name = findViewById(R.id.title_input);
+                Spinner party_spinner = findViewById(R.id.party_spinner);
+                Switch PWSwitch = findViewById(R.id.PW_switch);
+                EditText PW = findViewById(R.id.PW_input);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String now_ = formatter.format(new Date());
+                formatter = new SimpleDateFormat("yyyy-MM-ddHH:mm");
+                ChatRoomRequest chatRoomRequest = null;
+                try {
+                    chatRoomRequest = new ChatRoomRequest("필요없음..", name.getText().toString(), tempSet,
+                            formatter.parse(now_ + startTime), formatter.parse(now_ + durationtime)
+                            , Integer.parseInt(party_spinner.getSelectedItem().toString()), PWSwitch.isChecked(), PW.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 Call<BaseResponse> call = RetrofitService.getApiTokenService().createRoom(chatRoomRequest);
                 call.enqueue(new Callback<BaseResponse>(){
                     //콜백 받는 부분
@@ -139,6 +161,9 @@ public class CreateRoomActivity extends AppCompatActivity {
                     public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                         if (response.isSuccessful()) {
                             Log.d("test", response.body().toString() +", code: "+ response.code());
+                            Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
+                            startActivity(intent);
+                            finish();
                         } else {
                             try {
                                 Log.d("test", "방생성 실패" + response.errorBody().string() + ", code: "+ response.code());
