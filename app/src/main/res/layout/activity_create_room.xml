@@ -95,7 +95,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:entries="@array/party_array"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -124,7 +125,7 @@
                 android:id="@+id/start_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="시작"
+                android:text="시작시간"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="bold"
@@ -139,7 +140,7 @@
                 android:id="@+id/end_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="종료"
+                android:text="운영시간"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="bold"
@@ -150,21 +151,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
 
-            <Spinner
-                android:id="@+id/StartTime_spinner"
-                android:layout_width="137dp"
-                android:layout_height="48dp"
-                app:layout_constraintBottom_toBottomOf="@+id/start_rect"
-                app:layout_constraintEnd_toEndOf="@+id/start_rect"
-                app:layout_constraintStart_toStartOf="@+id/start_rect"
-                app:layout_constraintTop_toTopOf="@+id/start_rect" />
-
             <TextView
                 android:id="@+id/start_rect"
                 android:layout_width="194dp"
                 android:layout_height="41dp"
                 android:background="@drawable/round_rect"
                 android:ems="10"
+                android:text="00 : 00"
+                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"
@@ -178,20 +172,13 @@
                 android:layout_height="41dp"
                 android:background="@drawable/round_rect"
                 android:ems="10"
+                android:text="00 : 00"
+                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.82" />
-
-            <Spinner
-                android:id="@+id/EndTime_spinner"
-                android:layout_width="137dp"
-                android:layout_height="48dp"
-                app:layout_constraintBottom_toBottomOf="@+id/end_rect"
-                app:layout_constraintEnd_toEndOf="@+id/end_rect"
-                app:layout_constraintStart_toStartOf="@+id/end_rect"
-                app:layout_constraintTop_toTopOf="@+id/end_rect" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
