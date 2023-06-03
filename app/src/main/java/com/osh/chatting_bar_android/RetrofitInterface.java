@@ -47,14 +47,17 @@ public interface RetrofitInterface {
     @POST("/api/chatroom/enter")
     Call<BaseResponse> roomEnter(@Body LongRequest id);
 
+    @GET("/api/chatroom/{roomId}")
+    Call<OneCharRoomResponse> getRoomInfo(@Path("roomId") Long roomId);
+
     @DELETE("/api/chatroom/{roomId}")
-    Call<BaseResponse> roomExit(@Path("roomId") int roomId);
+    Call<BaseResponse> roomExit(@Path("roomId") Long roomId);
 
     @DELETE("/api/chatroom?roomId=&userId=")
-    Call<BaseResponse> roomKick(@Query("roomId") int roomId, @Query("userId") int userId);
+    Call<BaseResponse> roomKick(@Query("roomId") Long roomId, @Query("userId") int userId);
 
     @PATCH("/api/chatroom?roomId=&userId=")
-    Call<BaseResponse> roomIce(@Query("roomId") int roomId, @Query("userId") int userId);
+    Call<BaseResponse> roomIce(@Query("roomId") Long roomId, @Query("userId") int userId);
 
     @GET("/api/chatroom")
     Call<ChatRoomResponse> getAllRoom();

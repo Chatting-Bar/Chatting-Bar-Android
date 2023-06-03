@@ -62,6 +62,11 @@ public class RoomDetailInfoPopupDialog extends Dialog {
                         } else {
                             try {
                                 Log.d("test", "방입장"+response.errorBody().string() + ", code: " + response.code());
+                                Intent intent = new Intent(v.getContext(), RoomActivity.class);
+                                intent.putExtra("RoomID", information.getId());
+                                v.getContext().startActivity(intent);
+
+                                dismiss();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -76,11 +81,6 @@ public class RoomDetailInfoPopupDialog extends Dialog {
                         Toast.makeText(v.getContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                Intent intent = new Intent(v.getContext(), RoomActivity.class);
-                v.getContext().startActivity(intent);
-
-                dismiss();
             }
         });
 
