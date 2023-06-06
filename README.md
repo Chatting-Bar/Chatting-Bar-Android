@@ -1,6 +1,73 @@
-# 2023-1 소프트웨어공학 채팅마차 안드로이드
+
+<p align="center">
+  <img src="https://avatars.githubusercontent.com/u/129783133?s=200&v=4" width="300"/>
+</p>
+<h1 align="center"> 🏮 채팅마차 🏮 </h1>
+</br>
+<p align="middle">텍스트 기반 스트리밍 어플리케이션, 채팅마차입니다!</p>
+</br>
 
 <br>
+
+## 팀원  👨‍👨‍👧‍👧👩‍👦‍
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/Oc9aN"><img src="https://avatars.githubusercontent.com/u/59911975?v=4"width="150px;" alt=""/><br /><sub><b>FE 팀장 : 오시현</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/bae-suho"><img src="https://avatars.githubusercontent.com/u/115385697?v=4" width="150px;" alt=""/><br /><sub><b>FE 팀원 : 배수호</b></sub></a><br /></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+<div align=center><h1>📚 STACKS</h1></div>
+
+<div align=center> 
+  <h2> Tech </h2>
+  <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"> 
+  <img src="https://img.shields.io/badge/android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
+  <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
+  <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white">
+  <img src="https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white">
+  <img src="https://img.shields.io/badge/Spring Data Jpa-0078D4?style=for-the-badge&logo=&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Spring Security-6DB33F ?style=for-the-badge&logo=SpringSecurity&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens">
+
+
+  <!--DB-->
+  <img src="https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase">
+  <img src="https://img.shields.io/badge/h2-2962FF?style=for-the-badge&logo=h2&logoColor=white">
+  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+  
+  <h2> Infra </h2>
+  <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white">
+  <img src="https://img.shields.io/badge/amazonec2-FF9900.svg?style=for-the-badge&logo=amazonec2&logoColor=white">
+  <img src="https://img.shields.io/badge/amazonrds-527FFF.svg?style=for-the-badge&logo=amazonrds&logoColor=white">
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black">
+
+  
+  <h2> Tool </h2>
+  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+  <img src="https://img.shields.io/badge/androidstudio-3DDC84?style=for-the-badge&logo=androidstudio&logoColor=white">
+  <img src="https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white">
+  <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
+  <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white">
+  <img src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white">
+  <img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white">
+</div>
+<br>
+<br>
+
+<h2>📀 ERD </h2>
+<img align=center width="590" alt="ERD" src="https://github.com/Chatting-Bar/Chatting-Bar-Server/assets/97265630/31f2564d-def3-427f-ab3a-7661ff4b6a5c">
+<br>
+
+<h2>⭐️ API </h2>
+[API 명세서](https://www.notion.so/API-5b5b7308681b4c1d8f43137d7be66ae7?pvs=4)
+<br>
+<br>
+
 
 ## 🌱 Pull Requests Rule 
 **Title**: ex) [Feat]: 채팅 기능 추가 , [FIX]: 오류 수정
@@ -13,7 +80,7 @@
 
 <br>
 
-## ✔ Commit Message Convention
+## ✅ Commit Message Convention
 
 [FEAT]: 새로운 기능 추가
 
@@ -27,29 +94,22 @@
 
 <br>
 
-## 🍀 Members
-<table>
-  <tbody>
-    <tr>
-      <td align="center"><a href="https://github.com/Oc9aN"><img src="https://avatars.githubusercontent.com/u/59911975?v=4"width="150px;" alt=""/><br /><sub><b>FE 팀장 : 오시현</b></sub></a><br /></td>
-      <td align="center"><a href="https://github.com/bae-suho"><img src="https://avatars.githubusercontent.com/u/115385697?v=4" width="150px;" alt=""/><br /><sub><b>FE 팀원 : 배수호</b></sub></a><br /></td>
-    </tr>
-  </tbody>
-</table>
-
+## 🍃 Branch Strategy
+- main
+    - 배포 이력 관리 목적
+- develop
+    - feature 병합용 브랜치
+    - 배포 전 병합 브랜치
+- feature
+    - develop 브랜치를 베이스로 기능별로 feature 브랜치 생성해 개발
+- fix
+    - 수정용 브랜치
+- test
+    - 테스트가 필요한 코드용 브랜치
+- hotfix
+    - 배포 후 버그 발생 시 버그 수정 
 <br>
 
-<div align=center><h1>📚 STACKS</h1></div>
 
-<div align=center> 
-  <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
-  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-  <img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
-  <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
-  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
-  <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white">
-  <img src="https://img.shields.io/badge/androidstudio-3DDC84?style=for-the-badge&logo=androidstudio&logoColor=white">
-  <img src="https://img.shields.io/badge/android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
 
-</div>
+
