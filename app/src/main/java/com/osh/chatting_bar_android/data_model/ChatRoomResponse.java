@@ -11,6 +11,7 @@ public class ChatRoomResponse {
     @SerializedName("information")
     private List<ChatRoomInformation> information;
 
+
     public boolean getCheck() {
         return check;
     }

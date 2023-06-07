@@ -4,6 +4,8 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,10 +22,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.osh.chatting_bar_android.data_model.BaseResponse;
 import com.osh.chatting_bar_android.data_model.Categories;
 import com.osh.chatting_bar_android.data_model.ChatRoomRequest;
+import com.osh.chatting_bar_android.data_model.ChatRoomResponse;
+import com.osh.chatting_bar_android.data_model.CreateRoomResponse;
+import com.osh.chatting_bar_android.firebase.DatabaseManager;
+import com.osh.chatting_bar_android.firebase.data.ChatRoom;
+import com.osh.chatting_bar_android.firebase.data.ChatRoomData;
+import com.osh.chatting_bar_android.firebase.data.Guest;
+import com.osh.chatting_bar_android.firebase.data.Message;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -37,10 +47,15 @@ import retrofit2.Response;
 public class CreateRoomActivity extends AppCompatActivity {
     SharedPreferences pref;
     private String startTime;
+    private int startH, startM;
     private String durationtime;
+    private EditTagPopupDialog editTagPopupDialog;
+
+    public DatabaseManager db;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_room);
+        db = new DatabaseManager();
         pref = User.getInstance().getPreferences();
         InitBtn();
     }
@@ -63,6 +78,8 @@ public class CreateRoomActivity extends AppCompatActivity {
                             calenderInstance.set(Calendar.HOUR_OF_DAY, hourOfDay);
                             calenderInstance.set(Calendar.MINUTE, minute);
                             start_time.setText(hourOfDay + " : "+ minute);
+                            startH = hourOfDay;
+                            startM = minute;
                             startTime = hourOfDay + ":" + minute;
                         }
                     }
@@ -92,7 +109,9 @@ public class CreateRoomActivity extends AppCompatActivity {
                             calenderInstance.set(Calendar.HOUR_OF_DAY, hourOfDay);
                             calenderInstance.set(Calendar.MINUTE, minute);
                             operating_time.setText(hourOfDay + " : "+ minute);
-                            durationtime = hourOfDay + ":" + minute;
+                            int durationH = startH + hourOfDay;
+                            int durationM = startM + minute;
+                            durationtime = durationH + ":" + durationM;
                         }
                     }
                 };
@@ -102,6 +121,20 @@ public class CreateRoomActivity extends AppCompatActivity {
                 timePickerDialog.setTitle("운영시간");
                 Objects.requireNonNull(timePickerDialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
                 timePickerDialog.show();
+            }
+        });
+
+        //태그 설정
+        TextView tag_btn = findViewById(R.id.tagSet_rect);
+        tag_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editTagPopupDialog = new EditTagPopupDialog(CreateRoomActivity.this);
+
+                //아래 두 줄 라운드 외곽
+                editTagPopupDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                editTagPopupDialog.show();
+
             }
         });
 
@@ -148,20 +181,27 @@ public class CreateRoomActivity extends AppCompatActivity {
                 formatter = new SimpleDateFormat("yyyy-MM-ddHH:mm");
                 ChatRoomRequest chatRoomRequest = null;
                 try {
-                    chatRoomRequest = new ChatRoomRequest("필요없음..", name.getText().toString(), tempSet,
+                    chatRoomRequest = new ChatRoomRequest(name.getText().toString(), name.getText().toString(), tempSet,
                             formatter.parse(now_ + startTime), formatter.parse(now_ + durationtime)
                             , Integer.parseInt(party_spinner.getSelectedItem().toString()), PWSwitch.isChecked(), PW.getText().toString());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                Call<BaseResponse> call = RetrofitService.getApiTokenService().createRoom(chatRoomRequest);
-                call.enqueue(new Callback<BaseResponse>(){
-                    //콜백 받는 부분
+                Call<CreateRoomResponse> call = RetrofitService.getApiTokenService().createRoom(chatRoomRequest);
+                call.enqueue(new Callback<CreateRoomResponse>() {
                     @Override
-                    public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                    public void onResponse(Call<CreateRoomResponse> call, Response<CreateRoomResponse> response) {
                         if (response.isSuccessful()) {
                             Log.d("test", response.body().toString() +", code: "+ response.code());
+                            ChatRoomData chatRoomData = new ChatRoomData(User.getInstance().getId(), name.getText().toString());
+                            ArrayList<Guest> guest = new ArrayList<Guest>();
+                            ArrayList<Message> message = new ArrayList<Message>();
+                            ChatRoom chatRoom = new ChatRoom(message,chatRoomData,guest);
+                            db.createRoom(response.body().getInformation().getId(),chatRoom);
+                            Log.d("Firebase","id : "+response.body().getInformation().getId());
                             Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
+                            intent.putExtra("RoomID",response.body().getInformation().getId());
+
                             startActivity(intent);
                             finish();
                         } else {
@@ -175,9 +215,8 @@ public class CreateRoomActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<BaseResponse> call, Throwable t) {
+                    public void onFailure(Call<CreateRoomResponse> call, Throwable t) {
                         Log.d("test", "실패: "+ t.getMessage());
-
                         Toast.makeText(getApplicationContext(), "네트워크 문제로 방생성에 실패했습니다", Toast.LENGTH_SHORT).show();
                     }
                 });

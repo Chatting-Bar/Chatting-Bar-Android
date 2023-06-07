@@ -20,10 +20,14 @@ import com.google.android.material.navigation.NavigationView;
 import com.osh.chatting_bar_android.data_model.ChatRoomInformation;
 import com.osh.chatting_bar_android.data_model.ChatRoomResponse;
 import com.osh.chatting_bar_android.data_model.SearchResponse;
+import com.osh.chatting_bar_android.data_model.Status;
+import com.osh.chatting_bar_android.data_model.UserResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,6 +46,35 @@ public class MainActivity extends AppCompatActivity {
 
         mainActivity = MainActivity.this;
 
+        //유저 정보가 비어있으면 api로 정보 가져와서 싱글톤에 넣어준다. User.getInstance().get~();
+        if (User.getInstance().getId() == null) {
+            Call<UserResponse> userCall = RetrofitService.getApiTokenService().getUserInfo();
+            userCall.enqueue(new Callback<UserResponse>() {
+                //콜백 받는 부분
+                @Override
+                public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                    if (response.isSuccessful()) {
+                        Log.d("test", "유저정보"+response.body().toString() + ", code: " + response.code());
+                        User.getInstance().setInformation(response.body().getInformation());
+                    } else {
+                        try {
+                            Log.d("test", "유저정보 불러오기" + response.errorBody().string() + ", code: " + response.code());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<UserResponse> call, Throwable t) {
+                    Log.d("test", "실패: " + t.getMessage());
+
+                    Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
         InitBtn();
 
         blindSearchResult();
@@ -54,7 +87,11 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
                 if (response.isSuccessful()) {
 //                    Log.d("test", "최신순\n"+response.body().toString() + ", code: " + response.code());
-                    latestInfo = response.body().getInformation();
+                    latestInfo = new ArrayList<>();
+                    for (ChatRoomInformation info :response.body().getInformation()) {
+                        if (info.getStatus() == Status.ACTIVE)
+                            latestInfo.add(info);
+                    }
                     InitRoomList(latestInfo, findViewById(R.id.newest_recyclerView));
 
 //                    InitRoomList(latesetinfo, findViewById(R.id.subscribe_recyclerView));
@@ -84,11 +121,52 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
                 if (response.isSuccessful()) {
 //                    Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
-                    latestInfo = response.body().getInformation();
+                    latestInfo = new ArrayList<>();
+                    for (ChatRoomInformation info :response.body().getInformation()) {
+                        if (info.getStatus() == Status.ACTIVE)
+                            latestInfo.add(info);
+                    }
                     InitRoomList(latestInfo, findViewById(R.id.recommend_recyclerView));
                 } else {
                     try {
                         Log.d("test", "최신방"+response.errorBody().string() + ", code: " + response.code());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getApplicationContext(), "잘못된 요청입니다", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<ChatRoomResponse> call, Throwable t) {
+                Log.d("test", "실패: " + t.getMessage());
+
+                Toast.makeText(getApplicationContext(), "네트워크 문제가 발생했습니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //구독자 채팅방
+        call = RetrofitService.getApiTokenService().getFollowRoom();
+        call.enqueue(new Callback<ChatRoomResponse>() {
+            //콜백 받는 부분
+            @Override
+            public void onResponse(Call<ChatRoomResponse> call, Response<ChatRoomResponse> response) {
+                if (response.isSuccessful()) {
+//                    Log.d("test", "추천순\n"+response.body().toString() + ", code: " + response.code());
+                    latestInfo = new ArrayList<>();
+                    for (ChatRoomInformation info :response.body().getInformation()) {
+                        if (info.getStatus() == Status.ACTIVE)
+                            latestInfo.add(info);
+                    }
+                    if (latestInfo.isEmpty()) {
+                        LinearLayout followLayout = findViewById(R.id.follow_layout);
+                        followLayout.setVisibility(View.GONE);
+                    } else
+                        InitRoomList(latestInfo, findViewById(R.id.subscribe_recyclerView));
+                } else {
+                    try {
+                        Log.d("test", "구독방"+response.errorBody().string() + ", code: " + response.code());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -115,7 +193,11 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
                     if (response.isSuccessful()) {
 //                        Log.d("test", "검색\n"+response.body().toString() + ", code: " + response.code());
-                        latestInfo = response.body().getInformation().getInformation();
+                        latestInfo = new ArrayList<>();
+                        for (ChatRoomInformation info :response.body().getInformation().getInformation()) {
+                            if (info.getStatus() == Status.ACTIVE)
+                                latestInfo.add(info);
+                        }
                         TextView textView = findViewById(R.id.searchWord_text);
                         textView.setText("\""+str+"\"");
                         showSearchResult();
